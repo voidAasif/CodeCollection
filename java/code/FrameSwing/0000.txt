@@ -1,0 +1,18 @@
+complete (<== 01_swingIJ ==>) {
+    code: 20
+    video: 18
+}
+
+start: 29/jul/024;
+end:   05/aug/024;
+
+
+complete (<== 03_swing ==>) {
+    code: 28
+    video-time: 04:11:00
+}
+end: 19/aug/024;
+
+Graphics pending;
+
+

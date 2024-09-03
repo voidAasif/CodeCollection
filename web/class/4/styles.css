@@ -1,0 +1,143 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: gray;
+    display: grid;
+    place-content: center;
+    min-height: 100vh;
+}
+
+/* .formContainer {
+    background-color: red;
+    border-radius: 10px;
+    box-shadow: -10px -10px 10px black;
+} */
+
+form {
+    background-color: darkgray;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* width: ; */
+    /* height: 50vw; */
+
+    margin: 50px;
+    padding: 10px;
+
+    border-radius: 10px;
+    /* border: 5px solid black; */
+    box-shadow: -10px -10px 30px black;
+
+
+    background: linear-gradient(150deg, yellow , rgb(205, 167, 31) 100%);
+    
+}
+form label {
+    font-size: 15px;
+    margin-left: 5px;
+    /* font-family: ; */
+
+    font-family: "Playwrite AR", cursive;
+    font-optical-sizing: auto;
+    font-weight: 1000;
+    font-style: normal;
+}
+form input {
+    /* background-color: black; */
+    /* color: white; */
+    /* width: 13rem; */
+    width: 80%;
+    height: 2rem;
+    margin-left: 5px;
+    /* margin-top: 1rem; */
+    margin-bottom: 1rem;
+
+    border: 2px solid black;
+    border-radius: 5px;
+    padding-left: 1rem;
+
+    font-size: 16px;
+}
+.hed {
+    /* background-color: aqua; */
+    font-size: 25px;
+    padding-top: 1rem;
+    margin-bottom: 2rem;
+
+    font-family: "Playwrite AR", cursive;
+    font-optical-sizing: auto;
+    font-weight: 1000;
+    font-style: normal;
+}
+.firstName {
+    /* background-color: aquamarine; */
+    background-color: transparent;
+}
+.lastName {
+    /* background-color: azure; */
+    background-color: transparent;
+}
+.email {
+    /* background-color: chocolate; */
+    background-color: transparent;
+}
+.dob {
+    /* background-color: blue; */
+    background-color: transparent;
+}
+.gender {
+    /* background-color: blueviolet; */
+    background-color: transparent;
+}
+.gender input {
+    width: 15%;
+}
+#male {
+    /* margin-left: 10%; */
+    background-color: transparent;
+}
+#female {
+    /* margin-left: 6%; */
+    background-color: transparent;
+}
+.payDet {
+    /* background-color: cadetblue; */
+    background-color: transparent;
+}
+
+button {
+    font-size: 15px;
+    height: 4rem;
+    /* margin-top: 1rem; */
+    /* margin: 0px 50px 50px 50px; */
+    margin: 0px 0px 10px 0px;
+    border: 4px solid black;
+    border-radius: 10px;
+
+    /* background-color: rgb(255, 217, 81); */
+    /* box-shadow: 10px 10px 30px black; */
+    box-shadow: 5px 5px 15px gray;
+    background: linear-gradient(150deg, yellow , rgb(205, 167, 31) 100%);
+
+
+    font-family: "Playwrite AR", cursive;
+    font-optical-sizing: auto;
+    font-weight: 1000;
+    font-style: normal;
+
+}
+
+button:hover {
+    /* opacity: 80%; */
+    border: 2px solid black;
+    box-shadow: 5px 5px 15px black;
+}
+
+.about {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: rgb(69, 69, 69);
+}

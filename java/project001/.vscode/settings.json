@@ -1,0 +1,13 @@
+{
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "cSpell.words": [
+        "freedesktop",
+        "memorychip",
+        "upower",
+        "xrandr"
+    ],
+    "java.project.sourcePaths": [
+        "aboutSys/src"
+    ],
+    "java.project.referencedLibraries": []
+}

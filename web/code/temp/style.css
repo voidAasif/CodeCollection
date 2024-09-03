@@ -1,0 +1,112 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body {
+    background-color: gray;
+
+
+}
+
+.main {
+    background-image: linear-gradient(to right, blue, red);
+
+    height: 30vh;
+    width: 50vw;
+
+    position: relative;
+
+    top: 5rem;
+    left: 10rem;
+
+
+    border-radius: 10px;
+
+    /* box-shadow: 2px 2px 20px  blue; */
+    
+}
+
+.child {
+    background-color: white;
+    
+    height: 25vh;
+    width: 45vw;
+    
+    position: relative;
+    top: 23px;
+    left: 22px;
+    
+    
+    text-align: center;
+    place-content: center;
+
+    
+    border-radius: 5px;
+}
+
+.child h1 {
+    /* background-color: brown; */
+    font-size: 70px;
+}
+
+
+
+button {
+    position: absolute;
+    top: 30rem;
+    left: 20rem;
+
+    height: 3rem;
+    width: 8rem;
+
+    border: none;
+    border-radius: 30px;
+
+    background-color: rgb(235, 226, 107);
+
+
+    /* box-shadow: 4px 4px 5px rgb(255, 255, 255); */
+    box-shadow: 4px 4px 0px yellow;
+
+    z-index: -1;
+
+    transition: 0.3s;
+}
+
+button:hover {
+    box-shadow: 0px 0px 0px white;
+    
+    margin-left: 4px;
+    margin-top: 4px;
+
+    transition: 0.3s;
+}
+
+
+.test {
+
+    position: absolute;
+    top: 40rem;
+    left: 20rem;
+
+
+    background-color: red;
+    height: 10vh;
+    width: 20vw;
+
+    border-radius: 5px;
+}
+
+.test::before {
+    background-color: blue;
+
+    border-radius: 20px;
+
+}
+
+.test::after {
+    background-color: yellow;
+
+    border: 50px;
+}
+

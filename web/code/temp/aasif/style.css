@@ -1,0 +1,153 @@
+/* Resetting default padding, margin, and box-sizing for all elements */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Basic styles for the body */
+body {
+    background-color: white;
+    color: #333;
+}
+
+/* Header and navigation styling */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background: linear-gradient(to right, orange, black 50%);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.logo {
+    background-color: black;
+    border-radius: 10px;
+    padding: 10px;
+    width: 160px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo h3 {
+    color: orange;
+    font-size: 24px;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar ul li {
+    margin: 0 15px;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    transition: color 0.4s ease;
+}
+
+.navbar ul li a:hover {
+    color: orange;
+}
+
+/* Section styling */
+section {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.home {
+    background-color: #f9f9f9;
+}
+
+.about {
+    background-color: #eee;
+}
+
+.portfolio {
+    background-color: #f9f9f9;
+}
+
+.portfolio-items {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.portfolio-item {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 300px;
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: auto;
+}
+
+.portfolio-item h3 {
+    margin: 10px;
+    font-size: 20px;
+}
+
+.contact form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.contact label {
+    text-align: left;
+    width: 100%;
+    max-width: 500px;
+}
+
+.contact input,
+.contact textarea {
+    width: 100%;
+    max-width: 500px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.contact button {
+    padding: 10px 20px;
+    background-color: orange;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.contact button:hover {
+    background-color: darkorange;
+}
+
+/* Footer styling */
+footer {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 10px 20px;
+}

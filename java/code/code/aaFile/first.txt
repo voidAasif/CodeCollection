@@ -1,0 +1,6 @@
+abcdefghijklmnopqrstuvwxyz   xyz
+ apple
+ ball
+ cat
+ dog
+ elephant

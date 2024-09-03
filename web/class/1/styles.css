@@ -1,0 +1,58 @@
+a:link {
+    color: black;
+}
+a :visited {
+    color: chartreuse;
+}
+a:hover {
+    background-color: red;
+}
+#first {
+    color: red;
+}
+#second {
+    color: blue;
+}
+body {
+    background-color: aqua;
+}
+#div1 {
+    background-color: red;
+    width: 20vw;
+    height: 20vh;
+    margin: 10px 30px;
+    padding: 10px;
+}
+#div2 {
+    background-color: green;
+    width: 20vw;
+    height: 20vh;
+    margin: 10px 30px;
+    padding: 10px;
+}
+#div3 {
+    background-color: blue;
+    width: 20vw;
+    height: 20vh;
+    margin: 10px 30px;
+    padding: 10px;
+}
+.par{
+    background-color: white;
+    height: 100vh;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;    
+}
+
+.text {
+    width: 500px;
+    height: 500px;
+    overflow-x: scroll;
+    overflow-y: scroll;  
+}
+.text ::selection{
+    color: white;
+    background-color: black;
+}

@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.child {
+
+    width: 40rem;
+    height: 40rem;
+    background-color: aqua;
+    border-radius: 0px;
+
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin-top: auto;
+}
+.child h1{
+    margin-top: 500px;
+}
+@media(max-width: 768px){
+    .child {
+
+        width: 20rem;
+        height: 20rem;
+        background-color: yellow;
+        border-radius: 30px;
+    }
+}

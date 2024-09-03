@@ -1,0 +1,200 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: rgb(229, 228, 228);
+}
+
+.nav {
+    width: 100%;
+    display: flex;
+    float: left;
+    justify-content: center;
+    background-color: transparent;
+    margin-top: 1rem;
+    
+    /* temp  */
+
+    /* display: grid; */
+    /* grid-template-columns: repeat(3, 1fr); */
+}
+
+.nav ul{
+    display: flex;
+    float: left;
+
+    /* temp  */
+    background-color: transparent;
+
+}
+
+.nav ul li {
+    list-style: none;
+    display: flex;
+    float: left;
+    align-items: center;
+}
+
+.nav ul li a {
+    text-decoration: none;
+    margin: 1rem;
+
+    color: black;
+
+        /* temp  */
+    background-color: transparent;
+    font-size: 20px;
+
+
+
+    font-family: "Exo", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+
+
+}
+
+#homeInNav a{
+    color: rgb(197, 1, 1);
+}
+
+.nav ul li a:hover {
+    color: rgb(197, 1, 1);
+}
+
+
+.logo {
+    display: flex;
+    float: left;
+    align-items: center;
+
+    padding: 0px 2rem 0px 2rem;
+    margin: 0% 10% 0% 10%;
+
+    /* font-size: 30px; */
+
+    /* border: 4px solid black; */
+
+    background-color: transparent;
+
+    position: relative;
+    left: 5%;
+
+        /* temp  */     
+        
+    font-size: 35px;
+    border: 5px solid black;
+    border-radius: 5px;
+
+}
+
+
+
+.nav ul li a img {
+    /* width: 17px; */
+
+    /* temp  */
+    width: 20px;
+
+}
+
+#opt {
+    background-color: transparent;
+    border: 0px;
+    /* font-size: 16px; */
+
+
+        /* temp  */
+    font-size: 20px;
+
+}
+
+/* home  */
+
+.home {
+    background-color: transparent;
+    width: 100%;
+
+    display: grid;
+    /* grid-template-columns: repeat(2, 1fr); */
+    grid-template-columns: 45% 55%;
+}
+
+.home .left {
+    background-color: transparent;
+}
+#p1, #p2, #p3, #b1 {
+    /* margin-left: 30%; */
+    margin-bottom: 10px;
+
+    /* temp  */
+    margin-left: 35%;
+
+
+}
+
+#p1 {
+    margin-top: 30%;
+    /* font-size: 25px; */
+
+    /* temp  */
+    font-size: 30px;
+}
+#p2 {
+    /* font-size: 40px; */
+
+    /* temp  */
+    font-size: 50px;
+}
+#p3 {
+    /* font-size: 20px; */
+    color: rgba(0, 0, 0, 0.689);
+
+    /* temp  */
+    font-size: 30px;
+
+}
+#b1 {
+    margin-top: 3rem;
+    height: 3rem;
+    width: 10rem;
+    border: 0px;
+    border-radius: 4px;
+
+    background-color: white;
+}
+
+#b1:hover {
+    box-shadow: 1px 1px 2px gray;
+}
+
+
+
+.home .right {
+    background-color: transparent;
+    margin-left: 10rem;
+}
+
+.home .right img {
+
+    margin: 3rem 0rem 0rem 3rem;
+    filter: drop-shadow(20px 0px 10px rgb(98, 98, 98));
+    
+    width: 45%;
+
+    /* temp  */
+
+    margin: 1rem 0rem 0rem 2rem;
+
+}
+
+
+
+
+
+
+
+  

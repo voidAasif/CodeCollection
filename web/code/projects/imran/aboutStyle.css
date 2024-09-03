@@ -1,0 +1,29 @@
+#about {
+    padding: 20px;
+    background-color: #f9f9f9; /* Light background for contrast */
+    /* background-color: #ffeb3b; */
+    border-radius: 8px; /* Rounded corners */
+    margin: 20px 0; /* Space above and below */
+}
+
+#about h2 {
+    font-size: 2em; /* Heading size */
+    margin-bottom: 10px; /* Space below heading */
+}
+
+#about p {
+    font-size: 1em; /* Paragraph size */
+    line-height: 1.6; /* Line spacing */
+    margin-bottom: 10px; /* Space between paragraphs */
+}
+
+button {
+    height: 3rem;
+    width: 100%;
+
+    border-radius: 5px;
+    font-weight: 600;
+
+    border: 2px solid rgb(51, 193, 195);
+    background-color: white;
+}
