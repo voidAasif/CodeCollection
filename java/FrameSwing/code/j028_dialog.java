@@ -1,3 +1,5 @@
+package java.FrameSwing.code;
+
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 

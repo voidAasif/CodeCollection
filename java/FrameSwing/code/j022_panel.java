@@ -1,3 +1,5 @@
+package java.FrameSwing.code;
+
 //panel work as a container that hold other components;
 //panel use Flow layout manager as default;
 //where Frame use Border layout manager;

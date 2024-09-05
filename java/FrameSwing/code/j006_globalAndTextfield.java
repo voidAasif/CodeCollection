@@ -1,8 +1,10 @@
+package java.FrameSwing.code;
+
 import java.awt.Color;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
-import java.awt.event.ActionEvent;  // for actionListner;
+import java.awt.event.ActionEvent;  // for actionListener;
 import java.awt.event.ActionListener;
 
 class Global extends JFrame implements ActionListener{

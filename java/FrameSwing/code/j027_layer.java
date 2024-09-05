@@ -1,3 +1,5 @@
+package java.FrameSwing.code;
+
 import java.awt.Color;
 
 import javax.swing.JFrame;

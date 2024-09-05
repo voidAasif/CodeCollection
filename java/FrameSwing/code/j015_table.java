@@ -1,3 +1,5 @@
+package java.FrameSwing.code;
+
 import javax.swing.JFrame;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;

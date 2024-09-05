@@ -1,3 +1,5 @@
+package java.FrameSwing.code;
+
 import java.awt.Font;
 import java.awt.GridLayout;
 import javax.swing.JFrame;

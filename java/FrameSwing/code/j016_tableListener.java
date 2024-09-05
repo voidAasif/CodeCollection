@@ -1,3 +1,5 @@
+package java.FrameSwing.code;
+
 import javax.swing.JFrame; // Import the JFrame class for creating windows
 import javax.swing.JTable; // Import the JTable class for creating tables
 import javax.swing.ListSelectionModel; // Import ListSelectionModel for handling selection models

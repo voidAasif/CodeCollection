@@ -1,3 +1,5 @@
+package java.FrameSwing.code;
+
 import java.awt.FlowLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
