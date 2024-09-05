@@ -1,4 +1,4 @@
-package java.code.code;
+package code;
 
 import java.util.HashSet; //use key value to store and search elements;
 

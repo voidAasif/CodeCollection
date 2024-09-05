@@ -1,4 +1,4 @@
-package java.code.code;
+package code;
 
 //#1,2
 // Write a program to print "GoodMorning" and "Welcome" continuously on the screen in java using threads;

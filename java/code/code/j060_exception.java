@@ -1,4 +1,4 @@
-package java.code.code;
+package code;
 
 public class j060_exception {
     public static void main(String[] args){

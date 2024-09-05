@@ -1,4 +1,4 @@
-package java.code.code;
+package code;
 
 
 class ClassName1 { //extend Object class as default;

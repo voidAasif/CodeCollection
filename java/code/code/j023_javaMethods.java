@@ -1,4 +1,4 @@
-package java.code.code;
+package code;
 
 public class j023_javaMethods {
     static void fun(){

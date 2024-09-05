@@ -1,4 +1,4 @@
-package java.code.code;
+package code;
 
 class Generic<myDT>{  // myDT is custom dataType;
     public int num;

@@ -1,4 +1,4 @@
-package java.code.code;
+package code;
 
 public class j015_loops {
     public static void main(String[] args) {

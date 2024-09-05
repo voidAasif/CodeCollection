@@ -1,4 +1,4 @@
-package java.code.code;
+package code;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;

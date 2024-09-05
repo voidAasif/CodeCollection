@@ -1,4 +1,4 @@
-package java.code.code;
+package code;
 // * priority shows only when code was interrupted;
 
 // Thread.MAX_PRIORITY = 10;

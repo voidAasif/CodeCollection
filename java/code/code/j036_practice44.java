@@ -1,4 +1,4 @@
-package java.code.code;
+package code;
 
 /*
  * Overload a constructor used to initialize a rectangle of length 4 and breadth 5 for using custom parameters;

@@ -1,4 +1,4 @@
-package java.code.code;
+package code;
 
 // all ques in cwh video 60;
 //#1

@@ -1,5 +1,5 @@
 // *j002_calculate.java;
-package java.code.code;
+package code;
 
 import aaPack.j002_calculate; //import single file;
 

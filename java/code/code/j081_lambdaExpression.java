@@ -1,4 +1,4 @@
-package java.code.code;
+package code;
 
 @FunctionalInterface  // it only have one abstract method;
 interface FunctInterface {

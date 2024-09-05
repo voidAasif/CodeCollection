@@ -1,4 +1,4 @@
-package java.code.code;
+package code;
 
 import java.util.Calendar; //abstract class;
 import java.util.GregorianCalendar; //concrete class;

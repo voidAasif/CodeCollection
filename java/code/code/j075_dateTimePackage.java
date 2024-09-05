@@ -1,4 +1,4 @@
-package java.code.code;
+package code;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

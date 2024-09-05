@@ -1,4 +1,4 @@
-package java.code.code;
+package code;
 
 public class j010_stringMethods {
     public static void main(String[] args) {

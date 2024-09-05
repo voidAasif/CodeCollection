@@ -1,4 +1,4 @@
-package java.code.code;
+package code;
 
 /*
  * Create a class cylinder and use getters ans setters to set its radius and height.

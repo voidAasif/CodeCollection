@@ -1,4 +1,4 @@
-package java.code.code; //finally block;
+package code; //finally block;
 
 public class j065_finally {
 

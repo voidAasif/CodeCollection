@@ -1,4 +1,4 @@
-package java.code.code;
+package code;
 import java.util.Scanner;
 
 public class j061_specificException {

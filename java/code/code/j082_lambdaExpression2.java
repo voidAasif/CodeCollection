@@ -1,4 +1,4 @@
-package java.code.code;
+package code;
 
 interface MyInterface {
     abstract public String myMethod(int value);

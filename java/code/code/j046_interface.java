@@ -1,4 +1,4 @@
-package java.code.code;
+package code;
 
 interface smartFeatures{
     int price = 100;          // final as default;

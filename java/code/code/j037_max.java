@@ -1,4 +1,4 @@
-package java.code.code;
+package code;
 
 //maximum and second maximum elament in array
 

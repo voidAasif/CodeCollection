@@ -1,4 +1,4 @@
-package java.code.code;
+package code;
 
 public class j062_nestedException {
     public static void main(String[] args){

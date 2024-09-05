@@ -1,4 +1,4 @@
-package java.code.code;
+package code;
 
 abstract class Cars{  //abstract class has at least one abstract method;
     abstract public void speed();  //no need to make all method abstract in abstract class;

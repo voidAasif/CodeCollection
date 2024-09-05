@@ -1,4 +1,4 @@
-package java.code.code;
+package code;
 
 abstract class Base1{
     public void xyz(){

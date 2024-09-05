@@ -1,7 +1,7 @@
 // note:  package = dir;
 //there are two types of packages--> 1. builtin packages, 2. userdefined packages;
 
-package java.code.code;  //<-- user defined package;
+package code;  //<-- user defined package;
 //import java.util.Scanner; //<-- built in package;
 
 

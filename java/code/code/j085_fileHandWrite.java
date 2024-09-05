@@ -1,4 +1,4 @@
-package java.code.code;
+package code;
 
 import java.io.FileWriter;
 import java.io.IOException;

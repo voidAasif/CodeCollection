@@ -1,4 +1,4 @@
-package java.code.code; // Ques: vid: 87 || sol: vid: 103;
+package code; // Ques: vid: 87 || sol: vid: 103;
 
 import java.util.Scanner;
 

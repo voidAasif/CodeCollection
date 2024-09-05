@@ -1,5 +1,5 @@
 // * Implement thread by extending Thread class;
-package java.code.code;
+package code;
 
 class extendingThread extends Thread {
     public void run(){

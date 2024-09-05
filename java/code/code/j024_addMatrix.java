@@ -1,4 +1,4 @@
-package java.code.code;
+package code;
 
 public class j024_addMatrix {
  public static void main(String[] args){

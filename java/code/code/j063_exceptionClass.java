@@ -1,4 +1,4 @@
-package java.code.code;
+package code;
 import java.util.Scanner;
 
 class myException extends Exception{ //extend exception class for (custom exception);
