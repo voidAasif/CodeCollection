@@ -1,3 +1,5 @@
+package java.FrameSwing.practice;
+
 //#1;
 
 import javax.swing.*;

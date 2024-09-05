@@ -1,5 +1,5 @@
 //clone notepad;
-package FrameSwing.project;
+package java.FrameSwing.project;
 
 
 import javax.swing.ImageIcon; 

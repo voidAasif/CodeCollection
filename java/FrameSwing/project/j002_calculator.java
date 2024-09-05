@@ -1,6 +1,6 @@
-package FrameSwing.project;
+package java.FrameSwing.project;
 
-import FrameSwing.project.Process;
+// import FrameSwing.project.Process;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;

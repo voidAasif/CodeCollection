@@ -1,3 +1,5 @@
+package java.FrameSwing.practice;
+
 
 // create table (roll no , name , class);
 // create input field (rollno(int) , name(string) , class(int));
