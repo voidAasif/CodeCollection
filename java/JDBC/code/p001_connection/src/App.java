@@ -1,7 +1,7 @@
 
-import java.sql.DriverManager;
-import java.sql.Connection;
-import java.sql.SQLException;;
+import java.sql.DriverManager; //import connection driver;
+import java.sql.Connection; //responsible for connection;
+import java.sql.SQLException; //handle exception;
 
 
 public class App {
@@ -16,8 +16,8 @@ public class App {
         String password = "myPassword";
 
         //establish the connection;
-        try (Connection connection = DriverManager.getConnection(url, username, password)){
-            System.out.println("connected to the database");
+        try (Connection connection = DriverManager.getConnection(url, username, password)){ //use try-with-res to auto close the connection;
+            System.out.println("Connected to the database");
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("Connection failed");
