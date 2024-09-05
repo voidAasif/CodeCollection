@@ -1,4 +1,4 @@
-package code;  // throw and throws keywords in java
+package java.code.code;  // throw and throws keywords in java
 
 
 class myNegativeException extends Exception{  //custom exception class;

@@ -1,4 +1,4 @@
-package code;// ques: 104, ans: 113;
+package java.code.code;// ques: 104, ans: 113;
 
 import java.util.ArrayList;
 import java.util.Scanner;

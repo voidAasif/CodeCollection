@@ -1,4 +1,4 @@
-package code;
+package java.code.code;
 
 class myThr1 extends Thread {  // Thread 1;
     myThr1(String name){  // constructor of class(run when we make obj of myThr class);

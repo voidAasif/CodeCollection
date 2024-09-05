@@ -1,4 +1,4 @@
-package code;
+package java.code.code;
 
 import java.util.Scanner;
 public class j003_percen {

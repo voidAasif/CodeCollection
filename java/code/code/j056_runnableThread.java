@@ -1,5 +1,5 @@
 // * Implement thread by runnable thread;
-package code;
+package java.code.code;
 
 class runnableThread implements Runnable {
     public void run(){

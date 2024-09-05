@@ -1,4 +1,4 @@
-package code;
+package java.code.code;
 // visit for more methods;
 // https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html
 

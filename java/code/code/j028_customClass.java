@@ -1,4 +1,4 @@
-package code;
+package java.code.code;
 
 class smartphone { //custom class
     int price;

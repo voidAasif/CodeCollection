@@ -1,4 +1,4 @@
-package code;
+package java.code.code;
 
 //#5
 // write a program to generat a table of given number and write it to file;

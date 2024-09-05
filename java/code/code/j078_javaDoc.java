@@ -1,4 +1,4 @@
-package code;
+package java.code.code;
 
 //use javadoc command to generate documentation of this code;
 

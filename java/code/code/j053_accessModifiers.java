@@ -6,7 +6,7 @@
     no modifier	  Y	       Y	     N	        N
     private	      Y	       N	     N	        N
 */
-package code;
+package java.code.code;
 import aaPack.j003_access;
 
 

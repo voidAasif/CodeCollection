@@ -1,4 +1,4 @@
-package code;
+package java.code.code;
 
 interface gps {
     void homeLocation();

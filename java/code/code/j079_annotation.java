@@ -1,4 +1,4 @@
-package code;
+package java.code.code;
 
 class first {
     public void firstMeth(){

@@ -1,4 +1,4 @@
-package code;
+package java.code.code;
 
 //Constructors and constructors overloading;
 class className {

@@ -1,4 +1,4 @@
-package code;
+package java.code.code;
 
 // practice 51-52;
 // soulution vid 61;

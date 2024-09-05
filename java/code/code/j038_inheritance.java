@@ -1,4 +1,4 @@
-package code;
+package java.code.code;
 
 class animal{ // Base or parent class
     public void leg(){

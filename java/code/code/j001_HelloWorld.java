@@ -1,4 +1,4 @@
-package code;
+package java.code.code;
 
 public class j001_HelloWorld {
     public static void main(String[] args) {

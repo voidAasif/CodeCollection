@@ -1,4 +1,4 @@
-package code;
+package java.code.code;
 
 //vid 33
 public class j025_methodOverloadingAndVarargs {

@@ -1,4 +1,4 @@
-package code;
+package java.code.code;
 
 interface parentInterface1{ //interface 1;
     void meth1();

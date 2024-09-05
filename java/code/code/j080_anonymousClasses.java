@@ -1,4 +1,4 @@
-package code;
+package java.code.code;
 
 interface Anonymous { //methods implements and override in anonymous class;
     public void meth1();

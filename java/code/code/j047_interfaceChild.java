@@ -1,4 +1,4 @@
-package code;
+package java.code.code;
 
 // This is the main difference between class and interface;
 // interface has ability to implement multiple inheritance(more base one drived);

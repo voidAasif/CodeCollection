@@ -1,4 +1,4 @@
-package code;
+package java.code.code;
 
 /*
  * Create a class game, which allows a user to play guess the number game once. game should have the following methods --> 
