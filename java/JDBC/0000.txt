@@ -1,6 +1,6 @@
 complete (<== 01_jdbc ==>) {
-    code: 1
-    video: 6
+    code: 5
+    video: 10
 }
 
 start: 05/sep/024;
