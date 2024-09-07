@@ -33,8 +33,8 @@ class MainFrame extends JFrame implements ActionListener{
 	MainFrame(){
 		//frame;
 		this.setTitle("GUI with DB");
-		this.setLayout(new FlowLayout());
-		this.setSize(1000, 700);
+		this.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 200));
+		this.setSize(1700, 700);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 		
@@ -46,7 +46,7 @@ class MainFrame extends JFrame implements ActionListener{
 		
 		//button;
 		submit = new JButton("Submit");
-		submit.setPreferredSize(new Dimension(100, 500));
+		submit.setPreferredSize(new Dimension(200, 200));
 		submit.setFocusable(false);
 		
 		//action;
@@ -80,7 +80,7 @@ class MainFrame extends JFrame implements ActionListener{
 			
 			insert(inputRollNo, inputName, inputDob);
 			
-			output.setText(getRowAffected());
+			output.setText(getRowAffected() + "-- Row Affected");
 		}
 	}
 	
