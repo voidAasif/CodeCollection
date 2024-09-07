@@ -1,7 +1,0 @@
-complete (<== 01_jdbc ==>) {
-    code: 5
-    video: 10
-}
-
-start: 05/sep/024;
-end:    ;
