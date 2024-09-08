@@ -16,10 +16,11 @@ class MainFrame extends JFrame implements ActionListener{
 
     JButton addButton, deleteButton;
     JPanel scrollContainerPanel;
-    JScrollPane componentContainer;
+    JScrollPane panelContainer;
     JTextField textField;
 
     public int labelCount = 0;
+    public int initialHeight = 0;
 
     MainFrame(){
         this.setTitle("Dynamic label");
@@ -45,16 +46,16 @@ class MainFrame extends JFrame implements ActionListener{
         scrollContainerPanel.setBackground(Color.CYAN);
 
         
-        //add scrollPane into panel;
-        componentContainer = new JScrollPane(scrollContainerPanel);
+        //add panel into scrollPane;
+        panelContainer = new JScrollPane(scrollContainerPanel);
         // componentContainer.add(scrollContainerPanel, BorderLayout.CENTER);
 
 
         //add all component into scrollPane;
         //left side;
-        componentContainer.add(textField, BorderLayout.WEST);
-        componentContainer.add(addButton, BorderLayout.WEST);
-        componentContainer.add(deleteButton, BorderLayout.WEST);
+        scrollContainerPanel.add(textField, BorderLayout.NORTH);
+        scrollContainerPanel.add(addButton, BorderLayout.WEST);
+        scrollContainerPanel.add(deleteButton, BorderLayout.SOUTH);
 
         //now right side add labels; but in action method bcz i want to add label dynamically;
         
@@ -69,7 +70,7 @@ class MainFrame extends JFrame implements ActionListener{
     private JButton createButton(String title){
         JButton button = new JButton(title);
         button.setFocusable(false);
-        button.setPreferredSize(new Dimension(70, 30));
+        button.setPreferredSize(new Dimension(150, 100));
         return button;
     }
 
@@ -87,12 +88,12 @@ class MainFrame extends JFrame implements ActionListener{
 
     private void addLabel(String text){
         JLabel label = new JLabel(text + ++labelCount);
-        label.setPreferredSize(new Dimension(150, 100));
+        label.setPreferredSize(new Dimension(150, initialHeight+=200));
         label.setBackground(Color.RED);
-        componentContainer.add(label);
+        scrollContainerPanel.add(label, BorderLayout.NORTH);
 
-        componentContainer.revalidate();
-        componentContainer.repaint();
+        scrollContainerPanel.revalidate();
+        scrollContainerPanel.repaint();
     }
     private void deleteLabel(String text){
 
