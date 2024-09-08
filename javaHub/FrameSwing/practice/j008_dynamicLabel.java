@@ -7,10 +7,12 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 class MainFrame extends JFrame implements ActionListener{
 
@@ -18,9 +20,11 @@ class MainFrame extends JFrame implements ActionListener{
     JPanel scrollContainerPanel;
     JScrollPane panelContainer;
     JTextField textField;
+    JLabel label;
+    private ArrayList<JLabel> labels = new ArrayList<>();
 
     public int labelCount = 0;
-    public int initialHeight = 0;
+    // public int initialHeight = 0;
 
     MainFrame(){
         this.setTitle("Dynamic label");
@@ -42,7 +46,7 @@ class MainFrame extends JFrame implements ActionListener{
         deleteButton.addActionListener(this);
 
         scrollContainerPanel = new JPanel();
-        scrollContainerPanel.setLayout(new BorderLayout());
+        scrollContainerPanel.setLayout(new FlowLayout(FlowLayout.RIGHT , 0, 100));
         scrollContainerPanel.setBackground(Color.CYAN);
 
         
@@ -53,9 +57,9 @@ class MainFrame extends JFrame implements ActionListener{
 
         //add all component into scrollPane;
         //left side;
-        scrollContainerPanel.add(textField, BorderLayout.NORTH);
-        scrollContainerPanel.add(addButton, BorderLayout.WEST);
-        scrollContainerPanel.add(deleteButton, BorderLayout.SOUTH);
+        scrollContainerPanel.add(textField);
+        scrollContainerPanel.add(addButton);
+        scrollContainerPanel.add(deleteButton);
 
         //now right side add labels; but in action method bcz i want to add label dynamically;
         
@@ -87,16 +91,30 @@ class MainFrame extends JFrame implements ActionListener{
     }
 
     private void addLabel(String text){
-        JLabel label = new JLabel(text + ++labelCount);
-        label.setPreferredSize(new Dimension(150, initialHeight+=200));
+        label = new JLabel(text + ++labelCount);
+        label.setPreferredSize(new Dimension(150, 30));
         label.setBackground(Color.RED);
-        scrollContainerPanel.add(label, BorderLayout.NORTH);
+        label.setOpaque(true);
+        scrollContainerPanel.add(label);
+
+        labels.add(label); // Add label to ArrayList
 
         scrollContainerPanel.revalidate();
         scrollContainerPanel.repaint();
     }
-    private void deleteLabel(String text){
+    private void deleteLabel(String text){ //to delete label we need to use ArrayList of type JLabel;
+        // Iterate through the ArrayList to find and remove the label
+        for (int i = 0; i < labels.size(); i++) {
+            JLabel lbl = labels.get(i);
+            if (lbl.getText().startsWith(text)) { // Match based on the starting text
+                scrollContainerPanel.remove(lbl);
+                labels.remove(i);
+                break;
+            }
+        }
 
+        scrollContainerPanel.revalidate();
+        scrollContainerPanel.repaint();
     }
 }
 
