@@ -1,7 +1,8 @@
 {
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
-        "java/tools/mysql-connector-j-9.0.0.jar"
+        "java/tools/mysql-connector-j-9.0.0.jar",
+        "javaHub/tools/mysql-connector-j-9.0.0.jar"
     ],
     "cSpell.words": [
         "pstmt"
