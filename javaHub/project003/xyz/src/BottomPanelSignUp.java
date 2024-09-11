@@ -3,12 +3,23 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.*;
+// import java.io.*;
+
+//db imports;
+import java.sql.DriverManager;
+import java.sql.Connection;
+import java.sql.Statement;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 
 public class BottomPanelSignUp extends JPanel implements ActionListener{
 
-    String dataBasePath = "userAuth/src/res/db/dataBase.txt";
+    // String dataBasePath = "userAuth/src/res/db/dataBase.txt";
+    final String url = "jdbc:mysql://localhost:3306/sqlDB";
+    final String username = "root";
+    final String password = "myPassword";
 
     int auto = 0;
 
@@ -252,47 +263,55 @@ public class BottomPanelSignUp extends JPanel implements ActionListener{
         return strength;
     } // strength end;
 
-    private void upload(String userName, String userPassword, String userGmail ){
-        try {
-            FileWriter fileWriter = new FileWriter(dataBasePath, true);
-            // OutputStream outputStream = getClass().getResourceAsStream(dataBasePath);
-            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+    private void upload(String userName, String userPassword, String userGmail ){ //1-task-db;
 
-            bufferedWriter.write(userName + "," + userPassword + "," + userGmail);
-            bufferedWriter.newLine();
+        final String insertQuery = "INSERT INTO userData (user_gmail, user_name, user_password) VALUES (?, ?, ?)";
 
-            bufferedWriter.close();
-            fileWriter.close();
 
-        } catch (Exception e) {
-            System.out.println("Error while writing in file");
+        try (
+            Connection conn = DriverManager.getConnection(url, username, password);
+            PreparedStatement pstmt = conn.prepareStatement(insertQuery);
+        ) {
+            
+            pstmt.setString(1, userGmail);
+            pstmt.setString(2, userName);
+            pstmt.setString(3, userPassword);
+
+            if (pstmt.executeUpdate()>0) {
+                System.out.println("Insert Successful");
+            }else {
+                System.err.println("Error while Inserting");
+            }
+        } catch (SQLException e) {
             e.printStackTrace();
+            System.err.println("Error while connecting with DB");
         }
     } //upload end;
 
-    private boolean authenticate(String userName){
-        try {
-            // InputStream inputStream = getClass().getResourceAsStream(dataBasePath);
-            // BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(fileReader));
+    private boolean authenticate(String userName){ //2-task-db;
 
-            FileReader fileReader = new FileReader(dataBasePath);
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
+        String userInputUserName = userName;
 
-            String line;
-            while((line = bufferedReader.readLine()) != null ){
-                String[] data = line.split(",");
-                if(data[0].equals(userName)){
-                    bufferedReader.close();
-                    fileReader.close();
-                    return false;
+        final String fetchQuery = "SELECT user_name FROM userData";
+
+        try (
+            Connection conn = DriverManager.getConnection(userName, userName, userName);
+            Statement stmt = conn.createStatement();
+            ResultSet fetchData = stmt.executeQuery(fetchQuery);
+        ){
+            
+            while (fetchData.next()) {
+                String userNameInDB = fetchData.getString("user_name");
+
+                if(userInputUserName == userNameInDB){
+                    System.out.println("true"); //log;
+                    return true;
                 }
             }
-            fileReader.close();
-            bufferedReader.close();
 
         } catch (Exception e) {
-            System.out.println("Error while reading file");
             e.printStackTrace();
+            System.err.println("Error while fetching details from dataBase");
         }
         return true;
     } //authenticate end;

@@ -1,15 +1,23 @@
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.*;
+
+//db imports;
+import java.sql.DriverManager;
+import java.sql.Connection;
+import java.sql.Statement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 
 public class BottomPanelAuth extends JPanel implements ActionListener{
 
-    String dataBasePath = "/res/db/dataBase.txt";
+    // String dataBasePath = "/res/db/dataBase.txt";
+    final String url = "jdbc:mysql://localhost:3306/sqlDB";
+    final String username = "root";
+    final String password = "myPassword";
 
     int auto = 0;
 
@@ -142,7 +150,7 @@ public class BottomPanelAuth extends JPanel implements ActionListener{
             String userName = userNameTextField.getText();
             String userPassword = passwordTextField.getText();
 
-            if(!authenticate(userName, userPassword)){
+            if(authenticate(userName, userPassword)){
                 //signing conditions pending;
                 authForm.dispose();
 
@@ -156,28 +164,60 @@ public class BottomPanelAuth extends JPanel implements ActionListener{
         }
     }
 
-    private boolean authenticate(String userName, String userPassword){
-        try {
-            InputStream inputStream = getClass().getResourceAsStream(dataBasePath);
-            // FileReader fileReader = new FileReader(dataBasePath);
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+    // private boolean authenticate(String userName, String userPassword){
+    //     try {
+    //         InputStream inputStream = getClass().getResourceAsStream(dataBasePath);
+    //         // FileReader fileReader = new FileReader(dataBasePath);
+    //         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
 
-            String line;
-            while((line = bufferedReader.readLine()) != null ){
-                String[] data = line.split(",");
-                if(data[0].equals(userName) && data[1].equals(userPassword)){
-                    bufferedReader.close();
-                    inputStream.close();
-                    return false;
+    //         String line;
+    //         while((line = bufferedReader.readLine()) != null ){
+    //             String[] data = line.split(",");
+    //             if(data[0].equals(userName) && data[1].equals(userPassword)){
+    //                 bufferedReader.close();
+    //                 inputStream.close();
+    //                 return true;
+    //             }
+    //         }
+    //         bufferedReader.close();
+    //         inputStream.close();
+
+    //     } catch (Exception e) {
+    //         System.out.println("Error while reading file");
+    //         e.printStackTrace();
+    //     }
+    //     return true;
+    // }
+
+
+
+
+
+
+    private boolean authenticate(String userName, String userPassword){
+
+        final String fetchQuery = "SELECT user_name, user_password FROM userData;";
+
+        try (
+            Connection conn = DriverManager.getConnection(url, username, password);
+            Statement stmt = conn.createStatement();
+            ResultSet user = stmt.executeQuery(fetchQuery);
+        ) {
+            
+            while (user.next()) {
+                String name = user.getString("user_name");
+                String pass = user.getString("user_password");
+
+                if(name.equals(userName) && pass.equals(userPassword)){
+                    return true;
                 }
             }
-            bufferedReader.close();
-            inputStream.close();
 
-        } catch (Exception e) {
-            System.out.println("Error while reading file");
+        } catch (SQLException e) {
             e.printStackTrace();
+            System.out.println("Error while reading file");
         }
-        return true;
+
+        return false;
     }
 }
