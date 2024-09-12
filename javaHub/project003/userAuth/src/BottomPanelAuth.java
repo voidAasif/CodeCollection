@@ -158,40 +158,11 @@ public class BottomPanelAuth extends JPanel implements ActionListener{
                 new FinalFrame();
             }
             else {
-                JOptionPane.showMessageDialog(null, "User not found");
+                JOptionPane.showMessageDialog(null, "Invalid Username or Password");
             }
 
         }
     }
-
-    // private boolean authenticate(String userName, String userPassword){
-    //     try {
-    //         InputStream inputStream = getClass().getResourceAsStream(dataBasePath);
-    //         // FileReader fileReader = new FileReader(dataBasePath);
-    //         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-
-    //         String line;
-    //         while((line = bufferedReader.readLine()) != null ){
-    //             String[] data = line.split(",");
-    //             if(data[0].equals(userName) && data[1].equals(userPassword)){
-    //                 bufferedReader.close();
-    //                 inputStream.close();
-    //                 return true;
-    //             }
-    //         }
-    //         bufferedReader.close();
-    //         inputStream.close();
-
-    //     } catch (Exception e) {
-    //         System.out.println("Error while reading file");
-    //         e.printStackTrace();
-    //     }
-    //     return true;
-    // }
-
-
-
-
 
 
     private boolean authenticate(String userName, String userPassword){
@@ -215,7 +186,7 @@ public class BottomPanelAuth extends JPanel implements ActionListener{
 
         } catch (SQLException e) {
             e.printStackTrace();
-            System.out.println("Error while reading file");
+            System.out.println("Error while fetching data from dataBase");
         }
 
         return false;

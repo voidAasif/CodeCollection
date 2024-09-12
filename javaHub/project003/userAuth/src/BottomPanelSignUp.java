@@ -295,14 +295,14 @@ public class BottomPanelSignUp extends JPanel implements ActionListener{
         final String fetchQuery = "SELECT user_name FROM userData";
 
         try (
-            Connection conn = DriverManager.getConnection(userName, userName, userName);
+            Connection conn = DriverManager.getConnection(url, username, password);
             Statement stmt = conn.createStatement();
             ResultSet fetchData = stmt.executeQuery(fetchQuery);
         ){
             
             while (fetchData.next()) {
                 String userNameInDB = fetchData.getString("user_name");
-
+System.out.println(userInputUserName +" |###| " + userNameInDB);
                 if(userInputUserName == userNameInDB){
                     System.out.println("true"); //log;
                     return true;
@@ -311,8 +311,8 @@ public class BottomPanelSignUp extends JPanel implements ActionListener{
 
         } catch (Exception e) {
             e.printStackTrace();
-            System.err.println("Error while fetching details from dataBase");
+            System.err.println("Error while fetching data from dataBase");
         }
-        return true;
+        return false;
     } //authenticate end;
 }
