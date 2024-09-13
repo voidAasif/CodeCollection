@@ -6,10 +6,10 @@ import javax.swing.JFrame;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
-class MainFrame extends JFrame implements WindowListener{ //contains 7 methods;
+class WindowFrame extends JFrame implements WindowListener{ //contains 7 methods;
 
 
-    MainFrame(){
+    WindowFrame(){
         this.setLayout(null);
         this.setSize(700, 500);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -65,6 +65,6 @@ class MainFrame extends JFrame implements WindowListener{ //contains 7 methods;
 
 public class j038_winListeners {
     public static void main(String[] args){
-        new MainFrame();
+        new WindowFrame();
     }
 }
