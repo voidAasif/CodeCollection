@@ -2,7 +2,6 @@ package javaHub.FrameSwing.practice;
 
 import javax.swing.JFrame;
 import javax.swing.JProgressBar;
-
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 import java.awt.Color;
@@ -34,11 +33,21 @@ class ProgressFrame extends JFrame implements MouseMotionListener {
     @Override
     public void mouseDragged(MouseEvent arg0) {
         if(i<=100) progressBar.setValue(i++);
+        try {
+            Thread.sleep(20);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void mouseMoved(MouseEvent arg0) {
         if(i >= 0) progressBar.setValue(i--);
+        try {
+            Thread.sleep(20);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
 }
