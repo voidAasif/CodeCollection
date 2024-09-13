@@ -11,7 +11,7 @@ public class j010_DynamicTable {
         SwingUtilities.invokeLater(() -> { //use SwingUtilities.invokeLater method to manage component rendering;
             JFrame frame = new JFrame("Dynamic JTable Example");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setSize(400, 300);
+            frame.setSize(600, 300);
 
             // Create table model with column names
             DefaultTableModel tableModel = new DefaultTableModel(new Object[]{"Name", "Age"}, 0);
