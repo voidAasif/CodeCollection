@@ -1,6 +1,10 @@
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import mainCards.AddCard;
+import mainCards.DashCard;
+import mainCards.HomeCard;
+import mainCards.UpdateCard;
+
 // import java.awt.Color;
 import java.awt.CardLayout;
 import java.awt.Dimension;

@@ -1,3 +1,4 @@
+package mainCards;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JButton;
@@ -32,7 +33,7 @@ public class HomeCard extends JPanel implements ActionListener{
     JPanel mainPanel;
     CardLayout cardLayout;
 
-    HomeCard(JPanel mainPanel, CardLayout cardLayout){
+    public HomeCard(JPanel mainPanel, CardLayout cardLayout){
         this.mainPanel = mainPanel;
         this.cardLayout = cardLayout;
 

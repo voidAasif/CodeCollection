@@ -1,12 +1,16 @@
+package mainCards;
+
 import javax.swing.JPanel;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.CardLayout;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+
 import java.awt.BorderLayout;
-import java.awt.GridLayout;
 import java.awt.Font;
 import javax.swing.ImageIcon;
 import java.awt.Image;
@@ -23,7 +27,8 @@ public class AddCard extends JPanel implements ActionListener {
     Color themeColor = new Color(0xFFFFFF);
 
     JLabel goalName, goalCategory, goalDescription, goalStartDate, goalTargetDate;
-    JTextField goalNameField, goalCategoryField, goalDescriptionField, goalStartDateField, goalTargetDateField;
+    JTextField goalNameField, goalDescriptionField, goalStartDateField, goalTargetDateField;
+    JComboBox<String> goalCategoryBox;
     JPanel namePanel, categoryPanel, descriptionPanel, startPanel, targetPanel;
     JButton done;
 
@@ -33,7 +38,7 @@ public class AddCard extends JPanel implements ActionListener {
     int doneButtonWidth = 50;
     int doneButtonHeight = doneButtonWidth;
 
-    AddCard(JPanel mainPanel, CardLayout cardLayout){
+    public AddCard(JPanel mainPanel, CardLayout cardLayout){
         this.mainPanel = mainPanel;
         this.cardLayout = cardLayout;
 
@@ -51,10 +56,13 @@ public class AddCard extends JPanel implements ActionListener {
 
         //textFields;
         goalNameField = createTextField();
-        goalCategoryField = createTextField();
         goalDescriptionField = createTextField();
         goalStartDateField = createTextField();
         goalTargetDateField = createTextField();
+
+        //comboBox;
+        goalCategoryBox = new JComboBox<>(new String[] {"Programming", "Exam", "etc"});
+        goalCategoryBox.setPreferredSize(new Dimension(250, 50));
 
         //individual container;
         namePanel = createFieldContainer();
@@ -67,11 +75,11 @@ public class AddCard extends JPanel implements ActionListener {
         namePanel.add(goalName);
         namePanel.add(goalNameField);
 
-        categoryPanel.add(goalCategory);
-        categoryPanel.add(goalCategoryField);
-
         descriptionPanel.add(goalDescription);
         descriptionPanel.add(goalDescriptionField);
+
+        categoryPanel.add(goalCategory);
+        categoryPanel.add(goalCategoryBox);
 
         startPanel.add(goalStartDate);
         startPanel.add(goalStartDateField);
@@ -94,13 +102,14 @@ public class AddCard extends JPanel implements ActionListener {
         
 
         //labels and textField container panel;
-        JPanel all_fieldsContainerPanel = new JPanel(new GridLayout(5, 1));
+        // JPanel all_fieldsContainerPanel = new JPanel(new GridLayout(5, 1));
+        JPanel all_fieldsContainerPanel = new JPanel(new FlowLayout());
         all_fieldsContainerPanel.setBackground(themeColor);
 
         //add all group panel into all_fieldContainerPanel;
         all_fieldsContainerPanel.add(namePanel);
-        all_fieldsContainerPanel.add(categoryPanel);
         all_fieldsContainerPanel.add(descriptionPanel);
+        all_fieldsContainerPanel.add(categoryPanel);
         all_fieldsContainerPanel.add(startPanel);
         all_fieldsContainerPanel.add(targetPanel);
 
