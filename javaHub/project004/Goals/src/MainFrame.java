@@ -2,7 +2,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import mainCards.AddCard;
 import mainCards.DashCard;
-import mainCards.HomeCard;
+import mainCards.StartupCard;
 import mainCards.UpdateCard;
 
 // import java.awt.Color;
@@ -31,7 +31,7 @@ public class MainFrame extends JFrame {
         mainPanel.setLayout(cardLayout);
 
         //use cards;
-        HomeCard homeCard = new HomeCard(mainPanel, cardLayout);
+        StartupCard homeCard = new StartupCard(mainPanel, cardLayout);
         AddCard addCard = new AddCard(mainPanel, cardLayout);
         DashCard dashCard = new DashCard(mainPanel, cardLayout);
         UpdateCard updateCard = new UpdateCard(mainPanel, cardLayout);

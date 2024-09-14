@@ -16,7 +16,7 @@ import java.awt.Image;
 import javax.swing.Timer;
 
 
-public class HomeCard extends JPanel implements ActionListener{
+public class StartupCard extends JPanel implements ActionListener{
 
     JPanel titleContainer, midContainer, buttonContainer;
     JLabel mainTitle, title, quote1, quote2, quote3;
@@ -33,7 +33,7 @@ public class HomeCard extends JPanel implements ActionListener{
     JPanel mainPanel;
     CardLayout cardLayout;
 
-    public HomeCard(JPanel mainPanel, CardLayout cardLayout){
+    public StartupCard(JPanel mainPanel, CardLayout cardLayout){
         this.mainPanel = mainPanel;
         this.cardLayout = cardLayout;
 
