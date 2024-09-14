@@ -31,17 +31,19 @@ public class MainFrame extends JFrame {
         mainPanel.setLayout(cardLayout);
 
         //use cards;
-        StartupCard homeCard = new StartupCard(mainPanel, cardLayout);
+        StartupCard startupCard = new StartupCard(mainPanel, cardLayout);
         AddCard addCard = new AddCard(mainPanel, cardLayout);
         DashCard dashCard = new DashCard(mainPanel, cardLayout);
         UpdateCard updateCard = new UpdateCard(mainPanel, cardLayout);
 
-        //add Cards into panel;
-        mainPanel.add(homeCard, "HomeCard");
+        //add Cards into panel and control the flow of cards;
+        mainPanel.add(startupCard, "HomeCard");
         mainPanel.add(addCard, "AddCard");
         mainPanel.add(dashCard, "DashCard");
         mainPanel.add(updateCard, "UpdateCard");
 
+        //temp
+        cardLayout.show(mainPanel, "AddCard");
 
         //add mainPanel into frame;
         this.add(mainPanel);
