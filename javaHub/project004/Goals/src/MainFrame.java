@@ -1,30 +1,40 @@
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import java.awt.Color;
-import java.awt.BorderLayout;
+// import java.awt.Color;
+import java.awt.CardLayout;
 
 public class MainFrame extends JFrame {
 
     JPanel mainPanel;
+    CardLayout cardLayout;
 
+    
     MainFrame(){
-        this.setLayout(new BorderLayout());
         this.setSize(700, 550);
-        this.getContentPane().setBackground(Color.WHITE);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         //add mainPanel container into frame;
         mainPanel = new JPanel();
-        mainPanel.setBackground(Color.red);
-        mainPanel.setOpaque(true);
+        cardLayout = new CardLayout();
+        mainPanel.setLayout(cardLayout);
+
+        //use cards;
+        HomeCard homeCard = new HomeCard(mainPanel, cardLayout);
+        AddCard addCard = new AddCard(mainPanel, cardLayout);
+        DashCard dashCard = new DashCard(mainPanel, cardLayout);
+        UpdateCard updateCard = new UpdateCard(mainPanel, cardLayout);
 
         //add Cards into panel;
+        mainPanel.add(homeCard, "HomeCard");
+        mainPanel.add(addCard, "AddCard");
+        mainPanel.add(dashCard, "DashCard");
+        mainPanel.add(updateCard, "UpdateCard");
 
 
         //add mainPanel into frame;
-        this.add(mainPanel, BorderLayout.CENTER);
+        this.add(mainPanel);
 
         this.setVisible(true);
     }
