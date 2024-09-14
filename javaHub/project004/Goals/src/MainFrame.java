@@ -3,15 +3,21 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 // import java.awt.Color;
 import java.awt.CardLayout;
+import java.awt.Dimension;
+import javax.swing.ImageIcon;
 
 public class MainFrame extends JFrame {
 
     JPanel mainPanel;
     CardLayout cardLayout;
 
-    
+    //add frame logo;
+    ImageIcon frameIcon = new ImageIcon(getClass().getResource("/res/icons/logo.png"));
+
     MainFrame(){
         this.setSize(700, 550);
+        this.setMinimumSize(new Dimension(690, 520));
+        this.setIconImage(frameIcon.getImage());
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 

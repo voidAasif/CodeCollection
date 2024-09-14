@@ -1,5 +1,6 @@
 import javax.swing.JPanel;
 import java.awt.CardLayout;
+import javax.swing.JLabel;
 
 public class DashCard extends JPanel{
 
@@ -7,7 +8,9 @@ public class DashCard extends JPanel{
     CardLayout cardLayout;
 
     DashCard(JPanel mainPanel, CardLayout cardLayout){
+        JLabel temp = new JLabel("DashBoard");
 
+        this.add(temp);
     }
     
 }

@@ -18,7 +18,7 @@ import javax.swing.Timer;
 public class HomeCard extends JPanel implements ActionListener{
 
     JPanel titleContainer, midContainer, buttonContainer;
-    JLabel mainTitle, title, slogan;
+    JLabel mainTitle, title, quote1, quote2, quote3;
     JButton addGoalButton;
 
     Color themeColor = new Color(0xFFFFFF);
@@ -42,7 +42,11 @@ public class HomeCard extends JPanel implements ActionListener{
         //create all labels;
         mainTitle = createLabel("Goal Tracking", 30);
         title = createLabel("Goal", 100);
-        slogan = createLabel("We manage your goals and help you to achieve your Dreams", 15);
+        quote1 = createLabel("Your goals are the blueprint of your future. ", 15);
+        quote2 = createLabel("Track each step, celebrate each victory, and never lose sight of the bigger picture ", 15);
+        quote3 = createLabel("Greatness is within reach—stay committed and keep moving forward.", 15);
+
+
 
         //create a button;
         addIcon.setImage(addIcon.getImage().getScaledInstance(addButtonWidth, addButtonHeight, Image.SCALE_SMOOTH));
@@ -64,13 +68,15 @@ public class HomeCard extends JPanel implements ActionListener{
         titleContainer.setBackground(themeColor);
         
         
-        midContainer = new JPanel(new GridLayout(2,1));
+        midContainer = new JPanel(new GridLayout(2,1, 10, 0));
             JPanel titlePanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 50));
                 titlePanel.setBackground(null);
                 titlePanel.add(title);
-            JPanel sloganPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+            JPanel sloganPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 10));
                 sloganPanel.setBackground(null);
-                sloganPanel.add(slogan);
+                sloganPanel.add(quote1);
+                sloganPanel.add(quote2);
+                sloganPanel.add(quote3);
         midContainer.add(titlePanel);
         midContainer.add(sloganPanel);
         midContainer.setBackground(themeColor);
