@@ -71,8 +71,8 @@ public class GoalCategory extends JPanel {
         goalBox = new JComboBox<>(categories.toArray(new String[0]));
         goalBox.setPreferredSize(new Dimension(350, goalFieldHeight));
         goalBox.setFont(new Font("SansSerif", Font.PLAIN, 30));
-        goalBox.setForeground(cardTheme);
-        goalBox.setBackground(Color.BLACK);
+        goalBox.setForeground(Color.BLACK);
+        goalBox.setBackground(cardTheme);
         goalBox.setBorder(BorderFactory.createLineBorder(Color.BLACK, 8));
 
         // Text field panel;
