@@ -1,21 +1,20 @@
-package goalAddCard;
+package goalInputCards;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
+
+import com.toedter.calendar.JCalendar;
 
 import java.awt.CardLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import java.awt.Image;
+import java.awt.Dimension;
 
-
-public class GoalStart extends JPanel {
+public class GoalEnd extends JPanel {
     JPanel goalCardContainer;
     CardLayout goalCardContainerLayout;
 
@@ -23,15 +22,15 @@ public class GoalStart extends JPanel {
     ImageIcon goalIcon = new ImageIcon(getClass().getResource("/res/icons/calendar.png"));
 
     //card theme color;
-    Color cardTheme = new Color(0xE4D1FF);
+    Color cardTheme = new Color(0xFFDAB9);
 
     JLabel goalFieldIcon, goalLabel;
-    JTextField goalField;
+    JCalendar endDate;
     JPanel goalLabelContainer, goalFieldContainer;
 
     int goalFieldHeight = 70;
 
-    public GoalStart(JPanel goalCardContainer, CardLayout goalCardContainerLayout){
+    public GoalEnd(JPanel goalCardContainer, CardLayout goalCardContainerLayout){
         this.goalCardContainer = goalCardContainer;
         this.goalCardContainerLayout = goalCardContainerLayout;
 
@@ -42,7 +41,7 @@ public class GoalStart extends JPanel {
         this.setLayout(new GridLayout(2, 1));
 
         //label;
-        goalLabel = new JLabel("Goal Start");
+        goalLabel = new JLabel("Goal End");
         goalLabel.setFont(new Font("SansSerif", Font.BOLD, 70));
 
         //Label Panel;
@@ -59,28 +58,29 @@ public class GoalStart extends JPanel {
         goalFieldIcon.setBorder(null);
         goalFieldIcon.setOpaque(true);
 
-        goalField = new JTextField();
-        goalField.setPreferredSize(new Dimension(350, goalFieldHeight));
-        goalField.setFont(new Font("SansSerif", Font.PLAIN, 30));
-        goalField.setCaretColor(cardTheme);
-        goalField.setForeground(cardTheme);
-        goalField.setBackground(Color.BLACK);
-        goalField.setBorder(BorderFactory.createLineBorder(Color.BLACK, 8));
+        //calendar;
+        endDate = new JCalendar();
+        endDate.setPreferredSize(new Dimension(350, 200));
+        endDate.setForeground(Color.BLACK);
+
+        endDate.getDayChooser().getDayPanel().setBackground(new Color(0xCBE9F2));
+        endDate.getDayChooser().getDayPanel().setForeground(Color.BLACK);
+        endDate.getMonthChooser().getComboBox().setBackground(cardTheme);
+        endDate.getMonthChooser().getComboBox().setForeground(Color.BLACK);
+
+        //to get selected date "obj.getDate()" -> return Date instance, perform getDate while nextButton is pressed;
 
 
         //Text field panel;
-        goalFieldContainer = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 80));
+        goalFieldContainer = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 0));
         goalFieldContainer.setBackground(null);
         goalFieldContainer.add(goalFieldIcon);
-        goalFieldContainer.add(goalField);
+        goalFieldContainer.add(endDate);
 
 
         //add both panels into this panel;
 
         this.add(goalLabelContainer);
         this.add(goalFieldContainer);
-
-        
     }
-    
 }

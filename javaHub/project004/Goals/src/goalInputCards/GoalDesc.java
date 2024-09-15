@@ -1,8 +1,8 @@
-package goalAddCard;
+package goalInputCards;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.JTextArea;
 
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -14,35 +14,36 @@ import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import java.awt.Image;
 
-
-public class GoalName extends JPanel{
-
+public class GoalDesc extends JPanel{
     JPanel goalCardContainer;
     CardLayout goalCardContainerLayout;
 
     //goal input icon;
-    ImageIcon goalIcon = new ImageIcon(getClass().getResource("/res/icons/goal.png"));
+    ImageIcon goalIcon = new ImageIcon(getClass().getResource("/res/icons/description1.png"));
 
     //card theme color;
-    Color cardTheme = new Color(0xA6C8FF);
-    
+    Color cardTheme = new Color(0xFFE4E1);
     JLabel goalFieldIcon, goalLabel;
-    JTextField goalField;
+    JTextArea goalTextArea;
     JPanel goalLabelContainer, goalFieldContainer;
 
     int goalFieldHeight = 70;
 
-    public GoalName(JPanel goalCardContainer, CardLayout goalCardContainerLayout){
+    public GoalDesc(JPanel goalCardContainer, CardLayout goalCardContainerLayout){
         this.goalCardContainer = goalCardContainer;
         this.goalCardContainerLayout = goalCardContainerLayout;
+        
+        this.setBackground(Color.GREEN);
 
         //set card theme color;
         this.setBackground(cardTheme);
+        
+        
         this.setLayout(new GridLayout(2, 1));
 
         //label;
-        goalLabel = new JLabel("Enter Your Goal");
-        goalLabel.setFont(new Font("SansSerif", Font.BOLD, 70));
+        goalLabel = new JLabel("Enter Goal Description");
+        goalLabel.setFont(new Font("SansSerif", Font.BOLD, 50));
 
         //Label Panel;
         goalLabelContainer = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 80));
@@ -58,20 +59,22 @@ public class GoalName extends JPanel{
         goalFieldIcon.setBorder(null);
         goalFieldIcon.setOpaque(true);
 
-        goalField = new JTextField();
-        goalField.setPreferredSize(new Dimension(350, goalFieldHeight));
-        goalField.setFont(new Font("SansSerif", Font.PLAIN, 30));
-        goalField.setCaretColor(cardTheme);
-        goalField.setForeground(cardTheme);
-        goalField.setBackground(Color.BLACK);
-        goalField.setBorder(BorderFactory.createLineBorder(Color.BLACK, 8));
+        goalTextArea = new JTextArea();
+        goalTextArea.setPreferredSize(new Dimension(350, goalFieldHeight*2));
+        goalTextArea.setFont(new Font("Monospaced", Font.PLAIN, 20));
+        goalTextArea.setLineWrap(true);
+        goalTextArea.setWrapStyleWord(true);
+        goalTextArea.setForeground(cardTheme);
+        goalTextArea.setBackground(Color.BLACK);
+        goalTextArea.setCaretColor(cardTheme);
+        goalTextArea.setBorder(BorderFactory.createLineBorder(Color.BLACK, 8));
 
 
         //Text field panel;
-        goalFieldContainer = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 80));
+        goalFieldContainer = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 40));
         goalFieldContainer.setBackground(null);
         goalFieldContainer.add(goalFieldIcon);
-        goalFieldContainer.add(goalField);
+        goalFieldContainer.add(goalTextArea);
 
 
         //add both panels into this panel;
@@ -79,7 +82,5 @@ public class GoalName extends JPanel{
         this.add(goalLabelContainer);
         this.add(goalFieldContainer);
 
-        
-    } 
-
+    }
 }

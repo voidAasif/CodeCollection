@@ -1,18 +1,19 @@
 package mainCards;
 
 import javax.swing.JPanel;
+
+import goalInputCards.GoalCategory;
+import goalInputCards.GoalDesc;
+import goalInputCards.GoalEnd;
+import goalInputCards.GoalName;
+import goalInputCards.GoalStart;
+
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Image;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Dimension;
-
-import goalAddCard.GoalCategory;
-import goalAddCard.GoalDesc;
-import goalAddCard.GoalEnd;
-import goalAddCard.GoalName;
-import goalAddCard.GoalStart;
 
 import javax.swing.JButton;
 import javax.swing.ImageIcon;

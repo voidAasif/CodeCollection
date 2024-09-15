@@ -1,4 +1,4 @@
-package goalAddCard;
+package goalInputCards;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;

@@ -1,9 +1,8 @@
-package goalAddCard;
+package goalInputCards;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
 
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -15,34 +14,34 @@ import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import java.awt.Image;
 
-public class GoalEnd extends JPanel {
+
+public class GoalName extends JPanel{
+
     JPanel goalCardContainer;
     CardLayout goalCardContainerLayout;
 
     //goal input icon;
-    ImageIcon goalIcon = new ImageIcon(getClass().getResource("/res/icons/calendar.png"));
+    ImageIcon goalIcon = new ImageIcon(getClass().getResource("/res/icons/goal.png"));
 
     //card theme color;
-    Color cardTheme = new Color(0xFFDAB9);
-
+    Color cardTheme = new Color(0xA6C8FF);
+    
     JLabel goalFieldIcon, goalLabel;
     JTextField goalField;
     JPanel goalLabelContainer, goalFieldContainer;
 
     int goalFieldHeight = 70;
 
-    public GoalEnd(JPanel goalCardContainer, CardLayout goalCardContainerLayout){
+    public GoalName(JPanel goalCardContainer, CardLayout goalCardContainerLayout){
         this.goalCardContainer = goalCardContainer;
         this.goalCardContainerLayout = goalCardContainerLayout;
 
         //set card theme color;
         this.setBackground(cardTheme);
-        
-        
         this.setLayout(new GridLayout(2, 1));
 
         //label;
-        goalLabel = new JLabel("Goal End");
+        goalLabel = new JLabel("Enter Your Goal");
         goalLabel.setFont(new Font("SansSerif", Font.BOLD, 70));
 
         //Label Panel;
@@ -59,7 +58,7 @@ public class GoalEnd extends JPanel {
         goalFieldIcon.setBorder(null);
         goalFieldIcon.setOpaque(true);
 
-        goalField = new JTextField(); //temp;
+        goalField = new JTextField();
         goalField.setPreferredSize(new Dimension(350, goalFieldHeight));
         goalField.setFont(new Font("SansSerif", Font.PLAIN, 30));
         goalField.setCaretColor(cardTheme);
@@ -79,5 +78,8 @@ public class GoalEnd extends JPanel {
 
         this.add(goalLabelContainer);
         this.add(goalFieldContainer);
-    }
+
+        
+    } 
+
 }
