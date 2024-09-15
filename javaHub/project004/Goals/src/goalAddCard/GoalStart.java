@@ -1,13 +1,17 @@
 package goalAddCard;
 
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.FlowLayout;
+
 
 public class GoalStart extends JPanel {
     JPanel goalCardContainer;
     CardLayout goalCardContainerLayout;
+
+    //card theme color;
+    Color cardTheme = new Color(0xE4D1FF);
 
     public GoalStart(JPanel goalCardContainer, CardLayout goalCardContainerLayout){
         this.goalCardContainer = goalCardContainer;
@@ -15,9 +19,8 @@ public class GoalStart extends JPanel {
 
         this.setBackground(Color.GRAY);
 
-        // temp
-        JLabel label = new JLabel("Goal Start");
-        this.add(label);
-        System.out.println("Goal Start");
+        //set card theme color;
+        this.setBackground(cardTheme);
+        this.setLayout(new FlowLayout());
     }
 }
