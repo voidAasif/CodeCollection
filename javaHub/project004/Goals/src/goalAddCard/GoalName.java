@@ -25,6 +25,7 @@ public class GoalName extends JPanel{
 
     //card theme color;
     Color cardTheme = new Color(0xA6C8FF);
+    
     JLabel goalFieldIcon, goalLabel;
     JTextField goalField;
     JPanel goalLabelContainer, goalFieldContainer;

@@ -66,6 +66,7 @@ public class GoalDesc extends JPanel{
         goalTextArea.setWrapStyleWord(true);
         goalTextArea.setForeground(cardTheme);
         goalTextArea.setBackground(Color.BLACK);
+        goalTextArea.setCaretColor(cardTheme);
         goalTextArea.setBorder(BorderFactory.createLineBorder(Color.BLACK, 8));
 
 
