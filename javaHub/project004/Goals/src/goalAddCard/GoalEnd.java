@@ -3,14 +3,17 @@ package goalAddCard;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.awt.CardLayout;
+import java.awt.Color;
 
 public class GoalEnd extends JPanel {
     JPanel goalCardContainer;
-    CardLayout innerPanelCardLayout;
+    CardLayout goalCardContainerLayout;
 
-    public GoalEnd(JPanel goalCardContainer, CardLayout innerPanelCardLayout){
+    public GoalEnd(JPanel goalCardContainer, CardLayout goalCardContainerLayout){
         this.goalCardContainer = goalCardContainer;
-        this.innerPanelCardLayout = innerPanelCardLayout;
+        this.goalCardContainerLayout = goalCardContainerLayout;
+
+        this.setBackground(Color.YELLOW);
 
         // temp
         JLabel label = new JLabel("Goal End");

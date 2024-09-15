@@ -35,7 +35,7 @@ public class AddCard extends JPanel implements ActionListener {
     int buttonHeight = buttonWidth;
 
     JPanel goalCardContainer, bottomPanel;
-    CardLayout innerPanelCardLayout;
+    CardLayout goalCardContainerLayout;
 
     public AddCard(JPanel mainPanel, CardLayout cardLayout){
         this.mainPanel = mainPanel;
@@ -43,20 +43,22 @@ public class AddCard extends JPanel implements ActionListener {
 
         this.setLayout(new BorderLayout());
 
-        GoalName goalName = new GoalName(goalCardContainer, innerPanelCardLayout);
-        GoalDesc goalDesc = new GoalDesc(goalCardContainer, innerPanelCardLayout);
-        GoalCategory goalCategory = new GoalCategory(goalCardContainer, innerPanelCardLayout);
-        GoalStart goalStart = new GoalStart(goalCardContainer, innerPanelCardLayout);
-        GoalEnd goalEnd = new GoalEnd(goalCardContainer, innerPanelCardLayout);
+        goalCardContainerLayout = new CardLayout();
+        goalCardContainer = new JPanel(goalCardContainerLayout);
+
+        GoalName goalName = new GoalName(goalCardContainer, goalCardContainerLayout);
+        GoalDesc goalDesc = new GoalDesc(goalCardContainer, goalCardContainerLayout);
+        GoalCategory goalCategory = new GoalCategory(goalCardContainer, goalCardContainerLayout);
+        GoalStart goalStart = new GoalStart(goalCardContainer, goalCardContainerLayout);
+        GoalEnd goalEnd = new GoalEnd(goalCardContainer, goalCardContainerLayout);
         
         //top panel;
-        goalCardContainer = new JPanel(innerPanelCardLayout);
-        goalCardContainer.add(goalName, "GoalName");
-        goalCardContainer.add(goalDesc, "goalDesc");
-        goalCardContainer.add(goalCategory, "goalCategory");
-        goalCardContainer.add(goalStart, "goalStart");
-        goalCardContainer.add(goalEnd, "goalEnd");
-        goalCardContainer.setBackground(Color.RED);
+        goalCardContainer = new JPanel(goalCardContainerLayout);
+        goalCardContainer.add(goalName, "card1");
+        goalCardContainer.add(goalDesc, "card2");
+        goalCardContainer.add(goalCategory, "card3");
+        goalCardContainer.add(goalStart, "card4");
+        goalCardContainer.add(goalEnd, "card5");
         
         //create button;
         previousButton = createButton(previousButtonIcon);
@@ -77,17 +79,43 @@ public class AddCard extends JPanel implements ActionListener {
         this.add(goalCardContainer, BorderLayout.CENTER);
         this.add(bottomPanel, BorderLayout.SOUTH);
 
+        //control next and previous button;
+        previousButton.setEnabled(false);
+
 
     } //end constructor;
     
     @Override
     public void actionPerformed(ActionEvent arg0) {
         if(arg0.getSource() == nextButton){
-            innerPanelCardLayout.next(goalCardContainer);
+            goalCardContainerLayout.next(goalCardContainer);
+            
+            buttonEnableControl();
         }
         if(arg0.getSource() == previousButton){
-            innerPanelCardLayout.previous(goalCardContainer);
+            goalCardContainerLayout.previous(goalCardContainer);
+            
+            buttonEnableControl();
         }
+    }
+
+    private void buttonEnableControl(){
+        if(goalCardContainer.getComponent(0).isVisible()){
+            previousButton.setEnabled(false);
+        }
+        else{
+            previousButton.setEnabled(true);
+        }
+        if(goalCardContainer.getComponent(4).isVisible()){
+            nextButton.setEnabled(false);
+        }
+        else {
+            nextButton.setEnabled(true);
+        }
+
+        //also same;
+        // previousButton.setEnabled(!goalCardContainer.getComponent(0).isVisible());
+        // nextButton.setEnabled(!goalCardContainer.getComponent(4).isVisible());
     }
 
     private JButton createButton(ImageIcon buttonIcon){
