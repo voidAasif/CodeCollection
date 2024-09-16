@@ -37,7 +37,7 @@ public class MainFrame extends JFrame {
         UpdateCard updateCard = new UpdateCard(mainPanel, cardLayout);
 
         //add Cards into panel and control the flow of cards;
-        mainPanel.add(startupCard, "HomeCard");
+        mainPanel.add(startupCard, "StartupCard");
         mainPanel.add(addCard, "AddCard");
         mainPanel.add(dashCard, "DashCard");
         mainPanel.add(updateCard, "UpdateCard");

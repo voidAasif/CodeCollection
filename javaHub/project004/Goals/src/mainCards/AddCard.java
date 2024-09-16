@@ -2,6 +2,7 @@ package mainCards;
 
 import javax.swing.JPanel;
 
+import DBase.DBManagement;
 import goalInputCards.GoalCategory;
 import goalInputCards.GoalDesc;
 import goalInputCards.GoalEnd;
@@ -27,7 +28,7 @@ public class AddCard extends JPanel implements ActionListener {
     CardLayout cardLayout;
 
     Color themeColor = new Color(0xFFFFFF);
-    JButton nextButton, previousButton;
+    JButton nextButton, previousButton, tempButton; //temp;
 
     //icon for button;
     ImageIcon nextButtonIcon = new ImageIcon(getClass().getResource("/res/icons/next.png"));
@@ -64,11 +65,13 @@ public class AddCard extends JPanel implements ActionListener {
         //create button;
         previousButton = createButton(previousButtonIcon);
         nextButton = createButton(nextButtonIcon);
+        tempButton = createButton(nextButtonIcon);
 
         //action;
         previousButton.addActionListener(this);
         nextButton.addActionListener(this);
-
+        tempButton.addActionListener(this);
+        
 
         //bottom panel;
         bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 50, 10)); //gap between buttons;
@@ -88,6 +91,7 @@ public class AddCard extends JPanel implements ActionListener {
     
     @Override
     public void actionPerformed(ActionEvent arg0) {
+
         if(arg0.getSource() == nextButton){
             goalCardContainerLayout.next(goalCardContainer);
             
@@ -97,6 +101,12 @@ public class AddCard extends JPanel implements ActionListener {
             goalCardContainerLayout.previous(goalCardContainer);
             
             buttonEnableControl();
+        }
+        if(arg0.getSource() == tempButton){ //temp;
+            setInputGoal();
+
+            cardLayout.show(mainPanel, "DashCard");
+
         }
     }
 
@@ -108,7 +118,9 @@ public class AddCard extends JPanel implements ActionListener {
             previousButton.setEnabled(true);
         }
         if(goalCardContainer.getComponent(4).isVisible()){
-            nextButton.setEnabled(false);
+            bottomPanel.remove(nextButton);
+            bottomPanel.add(tempButton);
+            tempButton.setEnabled(true);
         }
         else {
             nextButton.setEnabled(true);
@@ -117,6 +129,10 @@ public class AddCard extends JPanel implements ActionListener {
         //also same;
         // previousButton.setEnabled(!goalCardContainer.getComponent(0).isVisible());
         // nextButton.setEnabled(!goalCardContainer.getComponent(4).isVisible());
+    }
+
+    private void setInputGoal(){
+        new DBManagement();
     }
 
     private JButton createButton(ImageIcon buttonIcon){
