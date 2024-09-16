@@ -6,6 +6,7 @@ public class DBManagement  {
     GoalName goalName = new GoalName();
     
     public DBManagement(){
-        System.out.println(goalName.getGoalName()); //not working;
+        goalName.setGoalName();
+        System.out.println("GoalName: "+goalName.getGoalName()); //not working;
     }
 }

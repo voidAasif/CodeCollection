@@ -28,7 +28,7 @@ public class AddCard extends JPanel implements ActionListener {
     CardLayout cardLayout;
 
     Color themeColor = new Color(0xFFFFFF);
-    JButton nextButton, previousButton, tempButton; //temp;
+    JButton nextButton, previousButton, finalButton;
 
     //icon for button;
     ImageIcon nextButtonIcon = new ImageIcon(getClass().getResource("/res/icons/next.png"));
@@ -65,12 +65,12 @@ public class AddCard extends JPanel implements ActionListener {
         //create button;
         previousButton = createButton(previousButtonIcon);
         nextButton = createButton(nextButtonIcon);
-        tempButton = createButton(nextButtonIcon);
+        finalButton = createButton(nextButtonIcon);
 
         //action;
         previousButton.addActionListener(this);
         nextButton.addActionListener(this);
-        tempButton.addActionListener(this);
+        finalButton.addActionListener(this);
         
 
         //bottom panel;
@@ -92,20 +92,20 @@ public class AddCard extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent arg0) {
 
-        if(arg0.getSource() == nextButton){
+        if(arg0.getSource() == nextButton){ //change goalInputCards;
             goalCardContainerLayout.next(goalCardContainer);
             
             buttonEnableControl();
         }
-        if(arg0.getSource() == previousButton){
+        if(arg0.getSource() == previousButton){ //change goalInputCards;
             goalCardContainerLayout.previous(goalCardContainer);
             
             buttonEnableControl();
         }
-        if(arg0.getSource() == tempButton){ //temp;
+        if(arg0.getSource() == finalButton){ //change mainCards and manage cards data after final click;
+            cardLayout.show(mainPanel, "DashCard");
             setInputGoal();
 
-            cardLayout.show(mainPanel, "DashCard");
 
         }
     }
@@ -119,8 +119,8 @@ public class AddCard extends JPanel implements ActionListener {
         }
         if(goalCardContainer.getComponent(4).isVisible()){
             bottomPanel.remove(nextButton);
-            bottomPanel.add(tempButton);
-            tempButton.setEnabled(true);
+            bottomPanel.add(finalButton);
+            finalButton.setEnabled(true);
         }
         else {
             nextButton.setEnabled(true);
