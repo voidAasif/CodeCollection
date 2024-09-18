@@ -19,7 +19,7 @@ public class DashCard extends JPanel implements ActionListener {
     //declare component for top Panel;
     JButton myGoalsButton, dailyTaskButton, priorityButton;
 
-    ImageIcon myGoalsButton_icon = new ImageIcon(getClass().getResource("/res/icons/myGoals2.png"));
+    ImageIcon myGoalsButton_icon = new ImageIcon(getClass().getResource("/res/icons/myGoals.png"));
     ImageIcon dailyTaskButton_icon = new ImageIcon(getClass().getResource("/res/icons/dailyTask.png"));
     ImageIcon priorityButton_icon = new ImageIcon(getClass().getResource("/res/icons/priority.png"));
 
