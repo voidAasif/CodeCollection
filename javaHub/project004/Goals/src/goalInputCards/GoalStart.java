@@ -14,6 +14,7 @@ import javax.swing.ImageIcon;
 import java.awt.Image;
 
 import com.toedter.calendar.JCalendar;
+import java.util.Date;
 
 
 public class GoalStart extends JPanel {
@@ -32,59 +33,70 @@ public class GoalStart extends JPanel {
 
     int goalFieldHeight = 70;
 
-    public GoalStart(JPanel goalCardContainer, CardLayout goalCardContainerLayout){
-        this.goalCardContainer = goalCardContainer;
-        this.goalCardContainerLayout = goalCardContainerLayout;
+    public Date input_goalStart;
 
+    public GoalStart(){
+        initUI();
+    }
+
+    public GoalStart(JPanel goalCardContainer, CardLayout goalCardContainerLayout){
+        this();
+        this.goalCardContainer = goalCardContainer;
+        this.goalCardContainerLayout = goalCardContainerLayout;  
+    }    
+    
+    private void initUI(){
         //set card theme color;
         this.setBackground(cardTheme);
         
-        
         this.setLayout(new GridLayout(2, 1));
-
+    
         //label;
         goalLabel = new JLabel("Goal Start");
         goalLabel.setFont(new Font("SansSerif", Font.BOLD, 70));
-
+    
         //Label Panel;
         goalLabelContainer = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 80));
         goalLabelContainer.setBackground(null);
         goalLabelContainer.add(goalLabel);
-
+    
         //text Field;
-
+    
         //setLabel to contains image;
         goalIcon.setImage(goalIcon.getImage().getScaledInstance(goalFieldHeight, goalFieldHeight, Image.SCALE_SMOOTH));
         goalFieldIcon = new JLabel(goalIcon);
         goalFieldIcon.setBackground(null);
         goalFieldIcon.setBorder(null);
         goalFieldIcon.setOpaque(true);
-
+    
+        //calendar;
         startDate = new JCalendar();
         startDate.setPreferredSize(new Dimension(350, 200));
         startDate.setForeground(Color.BLACK);
-
+    
         startDate.getDayChooser().getDayPanel().setBackground(new Color(0xCBE9F2));
         startDate.getDayChooser().getDayPanel().setForeground(Color.BLACK);
         startDate.getMonthChooser().getComboBox().setBackground(cardTheme);
         startDate.getMonthChooser().getComboBox().setForeground(Color.BLACK);
-
-        //to get selected date "obj.getDate()" -> return Date instance, perform getDate while nextButton is pressed;
-        
-
+    
 
         //Text field panel;
         goalFieldContainer = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 0));
         goalFieldContainer.setBackground(null);
         goalFieldContainer.add(goalFieldIcon);
         goalFieldContainer.add(startDate);
-
-
+    
         //add both panels into this panel;
-
+    
         this.add(goalLabelContainer);
         this.add(goalFieldContainer);
+    }
 
-        
-    }    
+    public void setGoalStart() {
+        this.input_goalStart = startDate.getDate();
+    }
+
+    public Date getGoalStart() {
+        return input_goalStart;
+    }
 }

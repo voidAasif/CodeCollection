@@ -138,9 +138,9 @@ public class AddCard extends JPanel implements ActionListener {
     private void setInputGoal(){
         goalName.setGoalName();
         goalDesc.setGoalDesc();
-        // goalCategory.setGoalCategory(); //pending
-        // goalStart.setGoalStart();
-        // goalEnd.setGoalEnd();
+        goalCategory.setGoalCategory();
+        goalStart.setGoalStart();
+        goalEnd.setGoalEnd();
         new DBManagement(goalName, goalDesc, goalCategory, goalStart, goalEnd);
     }
 

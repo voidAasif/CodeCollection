@@ -19,5 +19,8 @@ public class DBManagement {
         // Now you can access the goal name
         System.out.println("GoalName: " + goalName.getGoalName());
         System.out.println("GoalDesc: " + goalDesc.getGoalDesc());
+        System.out.println("GoalCategory: " + goalCategory.getGoalCategory());
+        System.out.println("GoalStart: " + goalStart.getGoalStart());
+        System.out.println("GoalEnd: " + goalEnd.getGoalEnd());
     }
 }
