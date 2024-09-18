@@ -39,6 +39,12 @@ public class AddCard extends JPanel implements ActionListener {
     JPanel goalCardContainer, bottomPanel;
     CardLayout goalCardContainerLayout;
 
+    GoalName goalName;
+    GoalDesc goalDesc;
+    GoalCategory goalCategory;
+    GoalStart goalStart;
+    GoalEnd goalEnd;
+
     public AddCard(JPanel mainPanel, CardLayout cardLayout){
         this.mainPanel = mainPanel;
         this.cardLayout = cardLayout;
@@ -48,11 +54,11 @@ public class AddCard extends JPanel implements ActionListener {
         goalCardContainerLayout = new CardLayout();
         goalCardContainer = new JPanel(goalCardContainerLayout);
 
-        GoalName goalName = new GoalName(goalCardContainer, goalCardContainerLayout);
-        GoalDesc goalDesc = new GoalDesc(goalCardContainer, goalCardContainerLayout);
-        GoalCategory goalCategory = new GoalCategory(goalCardContainer, goalCardContainerLayout);
-        GoalStart goalStart = new GoalStart(goalCardContainer, goalCardContainerLayout);
-        GoalEnd goalEnd = new GoalEnd(goalCardContainer, goalCardContainerLayout);
+        goalName = new GoalName(goalCardContainer, goalCardContainerLayout);
+        goalDesc = new GoalDesc(goalCardContainer, goalCardContainerLayout);
+        goalCategory = new GoalCategory(goalCardContainer, goalCardContainerLayout);
+        goalStart = new GoalStart(goalCardContainer, goalCardContainerLayout);
+        goalEnd = new GoalEnd(goalCardContainer, goalCardContainerLayout);
         
         //top panel;
         goalCardContainer = new JPanel(goalCardContainerLayout);
@@ -105,8 +111,6 @@ public class AddCard extends JPanel implements ActionListener {
         if(arg0.getSource() == finalButton){ //change mainCards and manage cards data after final click;
             cardLayout.show(mainPanel, "DashCard");
             setInputGoal();
-
-
         }
     }
 
@@ -132,7 +136,12 @@ public class AddCard extends JPanel implements ActionListener {
     }
 
     private void setInputGoal(){
-        new DBManagement();
+        goalName.setGoalName();
+        goalDesc.setGoalDesc();
+        // goalCategory.setGoalCategory(); //pending
+        // goalStart.setGoalStart();
+        // goalEnd.setGoalEnd();
+        new DBManagement(goalName, goalDesc, goalCategory, goalStart, goalEnd);
     }
 
     private JButton createButton(ImageIcon buttonIcon){

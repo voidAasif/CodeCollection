@@ -29,12 +29,20 @@ public class GoalDesc extends JPanel{
 
     int goalFieldHeight = 70;
 
-    public GoalDesc(JPanel goalCardContainer, CardLayout goalCardContainerLayout){
-        this.goalCardContainer = goalCardContainer;
-        this.goalCardContainerLayout = goalCardContainerLayout;
-        
-        this.setBackground(Color.GREEN);
+    public String input_goalDesc;
 
+    public GoalDesc(){
+        initUI();
+    }
+
+    public GoalDesc(JPanel goalCardContainer, CardLayout goalCardContainerLayout){
+        this();
+        this.goalCardContainer = goalCardContainer;
+        this.goalCardContainerLayout = goalCardContainerLayout; 
+        
+    }
+
+    private void initUI(){
         //set card theme color;
         this.setBackground(cardTheme);
         
@@ -81,6 +89,14 @@ public class GoalDesc extends JPanel{
 
         this.add(goalLabelContainer);
         this.add(goalFieldContainer);
-
     }
+
+    public void setGoalDesc() {
+        this.input_goalDesc = goalTextArea.getText();
+    }
+
+    public String getGoalDesc() {
+        return input_goalDesc;
+    }
+
 }

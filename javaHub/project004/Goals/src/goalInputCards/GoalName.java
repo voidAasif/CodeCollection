@@ -31,7 +31,7 @@ public class GoalName extends JPanel {
 
     int goalFieldHeight = 70;
 
-    public String goalFieldText;
+    public String input_goalName;
 
     public GoalName() {
         initUI();
@@ -89,11 +89,11 @@ public class GoalName extends JPanel {
     }
 
     public void setGoalName() {
-        this.goalFieldText = goalField.getText();
+        this.input_goalName = goalField.getText();
     }
 
     public String getGoalName() {
-        return goalFieldText;
+        return input_goalName;
     }
 
 }
