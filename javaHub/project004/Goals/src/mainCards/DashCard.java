@@ -9,6 +9,8 @@ import javax.swing.ImageIcon;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import SoundControl.*;
+
 public class DashCard extends JPanel implements ActionListener {
 
     JPanel mainPanel;
@@ -24,6 +26,8 @@ public class DashCard extends JPanel implements ActionListener {
     ImageIcon priorityButton_icon = new ImageIcon(getClass().getResource("/res/icons/priority.png"));
 
     Color dashTheme = new Color(0xDCF4F7);
+
+    SoundEffect soundEffect = new SoundEffect();
     
     public DashCard(){
         initUI();
@@ -87,9 +91,11 @@ public class DashCard extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent arg0) {
         if(arg0.getSource() == myGoalsButton){ //open my Goals page after click on this button;
             System.out.println("myGoals button clicked"); //log;
+            soundEffect.playSound("/res/audio/buttonClick.wav");
         }
         if(arg0.getSource() == dailyTaskButton){ //open daily task page after click on this button;
             System.out.println("dailyTask button clicked"); //log;
+            soundEffect.playSound("/res/audio/buttonClick2.wav");
         }
         if(arg0.getSource() == priorityButton){ //open priority page after click on this button;
             System.out.println("priority button clicked"); //log;
