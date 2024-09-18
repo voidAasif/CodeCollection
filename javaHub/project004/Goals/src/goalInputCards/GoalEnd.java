@@ -78,8 +78,7 @@ public class GoalEnd extends JPanel {
         endDate.getMonthChooser().getComboBox().setBackground(cardTheme);
         endDate.getMonthChooser().getComboBox().setForeground(Color.BLACK);
     
-        //to get selected date "obj.getDate()" -> return Date instance, perform getDate while nextButton is pressed;
-    
+
     
         //Text field panel;
         goalFieldContainer = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 0));
