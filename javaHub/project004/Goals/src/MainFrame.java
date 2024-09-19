@@ -3,7 +3,9 @@ import javax.swing.JPanel;
 import mainCards.AddCard;
 import mainCards.DashCard;
 import mainCards.StartupCard;
-import mainCards.UpdateCard;
+import mainCards.Todo;
+import mainCards.MyGoals;
+import mainCards.Priority;
 
 // import java.awt.Color;
 import java.awt.CardLayout;
@@ -34,13 +36,17 @@ public class MainFrame extends JFrame {
         StartupCard startupCard = new StartupCard(mainPanel, cardLayout);
         AddCard addCard = new AddCard(mainPanel, cardLayout);
         DashCard dashCard = new DashCard(mainPanel, cardLayout);
-        UpdateCard updateCard = new UpdateCard(mainPanel, cardLayout);
+        MyGoals myGoals = new MyGoals(mainPanel, cardLayout);
+        Todo todo = new Todo(mainPanel, cardLayout);
+        Priority priority = new Priority(mainPanel, cardLayout);
 
         //add Cards into panel and control the flow of cards;
         mainPanel.add(startupCard, "StartupCard");
         mainPanel.add(addCard, "AddCard");
         mainPanel.add(dashCard, "DashCard");
-        mainPanel.add(updateCard, "UpdateCard");
+        mainPanel.add(myGoals, "MyGoals");
+        mainPanel.add(todo, "Todo");
+        mainPanel.add(priority, "Priority");
 
         //temp
         cardLayout.show(mainPanel, "DashCard");

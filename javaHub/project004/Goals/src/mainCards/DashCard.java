@@ -1,10 +1,6 @@
 package mainCards;
 import javax.swing.JPanel;
 
-import DashCard.MyGoals;
-import DashCard.Priority;
-import DashCard.Todo;
-
 import javax.swing.JButton;
 import java.awt.CardLayout;
 import java.awt.BorderLayout;
@@ -138,17 +134,20 @@ public class DashCard extends JPanel implements ActionListener {
         if(arg0.getSource() == myGoalsButton){ //open my Goals page after click on this button;
             System.out.println("myGoals button clicked"); //log;
             soundEffect.playSound("/res/audio/buttonClick.wav");
-            new MyGoals(); //use dialog box here;
+            cardLayout.show(mainPanel, "MyGoals");
+
         }
         if(arg0.getSource() == dailyTaskButton){ //open daily task page after click on this button;
             System.out.println("dailyTask button clicked"); //log;
             soundEffect.playSound("/res/audio/buttonClick.wav");
-            new Todo();
+            cardLayout.show(mainPanel, "Todo");
+
         }
         if(arg0.getSource() == priorityButton){ //open priority page after click on this button;
             System.out.println("priority button clicked"); //log;
             soundEffect.playSound("/res/audio/buttonClick.wav");
-            new Priority();
+            cardLayout.show(mainPanel, "Priority");
+
         }
     } 
 }
