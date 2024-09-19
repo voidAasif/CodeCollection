@@ -6,29 +6,26 @@ import java.io.IOException;
 
 
 public class SoundEffect {
-    public void playSound(String soundPath){
+    public void playSound(String soundPath){ //path of audio file;
         System.out.println(soundPath); //debug, log;
-        try {
-            // Open an audio input stream
-            // File audioFile = new File(soundPath);
+        try {     
             
-            
-            InputStream audioFile = getClass().getResourceAsStream(soundPath);
+            InputStream audioFile = getClass().getResourceAsStream(soundPath); //convert file into stream;
             if (audioFile == null) {
                 System.out.println("Audio file not found: " + soundPath);
                 return;
             }
 
 
-            AudioInputStream audioInput = AudioSystem.getAudioInputStream(audioFile);
+            AudioInputStream audioInput = AudioSystem.getAudioInputStream(audioFile); //convert stream into audioStream;
             
-            // Get a sound clip resource
+            //Get a sound clip resource
             Clip clip = AudioSystem.getClip();
             
-            // Open the clip and load samples from the audio input stream
+            //Open the clip and load samples from the audio input stream
             clip.open(audioInput);
             
-            // Play the sound
+            //Play the sound
             clip.start();
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException ex) {
             System.out.println("Error playing sound.");

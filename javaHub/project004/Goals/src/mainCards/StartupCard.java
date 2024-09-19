@@ -15,6 +15,8 @@ import javax.swing.ImageIcon;
 import java.awt.Image;
 import javax.swing.Timer;
 
+import SoundControl.*;
+
 
 public class StartupCard extends JPanel implements ActionListener{
 
@@ -32,6 +34,8 @@ public class StartupCard extends JPanel implements ActionListener{
 
     JPanel mainPanel;
     CardLayout cardLayout;
+
+    SoundEffect soundEffect = new SoundEffect();
 
     public StartupCard(JPanel mainPanel, CardLayout cardLayout){
         this.mainPanel = mainPanel;
@@ -103,6 +107,7 @@ public class StartupCard extends JPanel implements ActionListener{
     public void actionPerformed(ActionEvent arg0) {
         if(arg0.getSource() == addGoalButton){
             clickEffect();
+            soundEffect.playSound("/res/audio/buttonClick.wav");
             
             Timer timer = new Timer(400, new ActionListener() {
                 @Override

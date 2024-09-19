@@ -21,6 +21,8 @@ import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+import SoundControl.*;
+
 
 public class AddCard extends JPanel implements ActionListener {
 
@@ -44,6 +46,8 @@ public class AddCard extends JPanel implements ActionListener {
     GoalCategory goalCategory;
     GoalStart goalStart;
     GoalEnd goalEnd;
+
+    SoundEffect soundEffect = new SoundEffect();
 
     public AddCard(JPanel mainPanel, CardLayout cardLayout){
         this.mainPanel = mainPanel;
@@ -100,16 +104,20 @@ public class AddCard extends JPanel implements ActionListener {
 
         if(arg0.getSource() == nextButton){ //change goalInputCards;
             goalCardContainerLayout.next(goalCardContainer);
+            soundEffect.playSound("/res/audio/buttonClick.wav");
             
             buttonEnableControl();
         }
         if(arg0.getSource() == previousButton){ //change goalInputCards;
             goalCardContainerLayout.previous(goalCardContainer);
+            soundEffect.playSound("/res/audio/buttonClick.wav");
             
             buttonEnableControl();
         }
         if(arg0.getSource() == finalButton){ //change mainCards and manage cards data after final click;
             cardLayout.show(mainPanel, "DashCard");
+            soundEffect.playSound("/res/audio/buttonClick.wav");
+
             setInputGoal();
         }
     }
