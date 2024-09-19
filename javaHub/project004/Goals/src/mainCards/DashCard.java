@@ -71,15 +71,15 @@ public class DashCard extends JPanel implements ActionListener {
         topPanel.add(priorityButton);
 
         //component for bottom panel;
-        goalName = new JLabel("ABC Goal");
+        goalName = new JLabel("ABC Goal"); //demo data;
         goalName.setFont(new Font("Arial", Font.BOLD, 35));
         goalName.setBackground(null);
 
-        endDate = new JLabel("00-00-0000");
+        endDate = new JLabel("00-00-0000"); //demo data;
         endDate.setFont(new Font("Arial", Font.BOLD, 25));
         endDate.setBackground(null);
 
-        countDown = new JLabel("365");
+        countDown = new JLabel("365"); //demo data;
         countDown.setFont(new Font("Arial", Font.BOLD, 200));
         countDown.setBackground(null);
 
@@ -140,13 +140,13 @@ public class DashCard extends JPanel implements ActionListener {
         if(arg0.getSource() == dailyTaskButton){ //open daily task page after click on this button;
             System.out.println("dailyTask button clicked"); //log;
             soundEffect.playSound("/res/audio/buttonClick.wav");
-            cardLayout.show(mainPanel, "Todo");
+            // cardLayout.show(mainPanel, "Todo");
 
         }
         if(arg0.getSource() == priorityButton){ //open priority page after click on this button;
             System.out.println("priority button clicked"); //log;
             soundEffect.playSound("/res/audio/buttonClick.wav");
-            cardLayout.show(mainPanel, "Priority");
+            // cardLayout.show(mainPanel, "Priority");
 
         }
     } 
