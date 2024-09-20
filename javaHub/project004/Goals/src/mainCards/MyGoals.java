@@ -130,6 +130,7 @@ public class MyGoals extends JPanel implements ActionListener {
         if(arg0.getSource() == addButton){
             soundEffect.playSound("/res/audio/buttonClick.wav");
             // cardLayout.show(mainPanel, "AddCard"); //temp block navigation;
+            //fetchDataFromDB(); //logic to make list updated;
         }
         if(arg0.getSource() == updateButton){
             soundEffect.playSound("/res/audio/buttonClick.wav");
@@ -138,4 +139,21 @@ public class MyGoals extends JPanel implements ActionListener {
             soundEffect.playSound("/res/audio/buttonClick.wav");
         }
     }
+
+    // private void fetchDataFromDB(){
+    // (also add update and delete button at the end of listLine);
+            // update list => match with DB;
+                //if new entry found then call newListLine and pass new data;
+    //     revalidate();
+    //     repaint();
+    // }
 }
+
+//todo;
+// remove update and delete button from this panel;
+// create dynamicList structure without database (but keep DB on mind);
+
+// addButton onClick => goto AddCard
+//                         store all input data into DB
+//                         now update list -> fetchDataFromDB();
+
