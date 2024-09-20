@@ -11,6 +11,7 @@ import java.awt.Image;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
+import javax.swing.BoxLayout;
 
 import SoundControl.*;
 
@@ -20,14 +21,13 @@ public class MyGoals extends JPanel implements ActionListener {
 
     ImageIcon previousButtonIcon = new ImageIcon(getClass().getResource("/res/icons/previous.png"));
     ImageIcon addButtonIcon = new ImageIcon(getClass().getResource("/res/icons/addButton.png"));
-    ImageIcon updateButtonIcon = new ImageIcon(getClass().getResource("/res/icons/updateButton.png"));
-    ImageIcon deleteButtonIcon = new ImageIcon(getClass().getResource("/res/icons/removeButton.png"));
+
     int previousButtonWidth = 30;
     int previousButtonHeight = previousButtonWidth;
     JButton previousButton;
     JLabel cardTitle;
     JPanel topPanel, midPanel, bottomPanel;
-    JButton addButton, updateButton, deleteButton;
+    JButton addButton;
 
     SoundEffect soundEffect = new SoundEffect();
 
@@ -61,6 +61,7 @@ public class MyGoals extends JPanel implements ActionListener {
 
         //midPanel to contains user goals list;
         midPanel = new JPanel(); //pending;
+        midPanel.setLayout(new BoxLayout(midPanel, BoxLayout.Y_AXIS));
         midPanel.setBackground(Color.ORANGE);
 
 
@@ -77,19 +78,10 @@ public class MyGoals extends JPanel implements ActionListener {
         addButton = createButton(addButtonIcon);
         addButton.addActionListener(this);
 
-        updateButton = createButton(updateButtonIcon);
-        updateButton.addActionListener(this);
-
-        deleteButton = createButton(deleteButtonIcon);
-        deleteButton.addActionListener(this);
-
 
         //bottomPanel to contains operations buttons;
         bottomPanel = new JPanel(new FlowLayout(FlowLayout.LEADING));
         bottomPanel.add(addButton);
-        bottomPanel.add(updateButton);
-        bottomPanel.add(deleteButton);
-
 
         //add components into this panel;
         this.add(topPanel, BorderLayout.NORTH);
@@ -130,14 +122,9 @@ public class MyGoals extends JPanel implements ActionListener {
         if(arg0.getSource() == addButton){
             soundEffect.playSound("/res/audio/buttonClick.wav");
             // cardLayout.show(mainPanel, "AddCard"); //temp block navigation;
-            //fetchDataFromDB(); //logic to make list updated;
+            // fetchDataFromDB(); //logic to make list updated;
         }
-        if(arg0.getSource() == updateButton){
-            soundEffect.playSound("/res/audio/buttonClick.wav");
-        }
-        if(arg0.getSource() == deleteButton){
-            soundEffect.playSound("/res/audio/buttonClick.wav");
-        }
+
     }
 
     // private void fetchDataFromDB(){
