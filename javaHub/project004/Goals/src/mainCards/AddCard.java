@@ -118,7 +118,7 @@ public class AddCard extends JPanel implements ActionListener {
             cardLayout.show(mainPanel, "DashCard");
             soundEffect.playSound("/res/audio/buttonClick.wav");
 
-            setInputGoal();
+            setInputGoal(); //send data on DB;
         }
     }
 
