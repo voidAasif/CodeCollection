@@ -4,7 +4,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import com.toedter.calendar.JCalendar;
-import java.util.Date;
+// import java.util.Date; //collide with sql date;
+import java.sql.Date;
 
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -95,7 +96,11 @@ public class GoalEnd extends JPanel {
     }
 
     public void setGoalEnd() {
-        this.input_goalEnd = endDate.getDate();
+        //use date formatter class to set YYYY-MM-DD format;
+        java.util.Date simpleDate = endDate.getDate();
+        java.sql.Date formattedDate = new java.sql.Date(simpleDate.getTime());
+
+        this.input_goalEnd = formattedDate;
     }
 
     public Date getGoalEnd() {

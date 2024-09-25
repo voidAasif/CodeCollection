@@ -12,9 +12,11 @@ import java.awt.GridLayout;
 import javax.swing.ImageIcon;
 
 import java.awt.Image;
+import java.sql.Date;
+// import java.util.Date; //collide with sql Date;
 
 import com.toedter.calendar.JCalendar;
-import java.util.Date;
+
 
 
 public class GoalStart extends JPanel {
@@ -93,7 +95,11 @@ public class GoalStart extends JPanel {
     }
 
     public void setGoalStart() {
-        this.input_goalStart = startDate.getDate();
+        //use date formatter class to set YYYY-MM-DD format;
+        java.util.Date simpleDate = startDate.getDate();
+        java.sql.Date formattedDate = new java.sql.Date(simpleDate.getTime());
+
+        this.input_goalStart = formattedDate;
     }
 
     public Date getGoalStart() {
