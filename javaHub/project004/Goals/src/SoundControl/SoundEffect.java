@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class SoundEffect {
     public void playSound(String soundPath){ //path of audio file;
-        System.out.println(soundPath); //debug, log;
+        // System.out.println(soundPath); //debug, log;
         try {     
             
             InputStream audioFile = getClass().getResourceAsStream(soundPath); //convert file into stream;
