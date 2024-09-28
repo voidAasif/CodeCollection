@@ -9,7 +9,7 @@ public class ListForMyGoals extends JPanel implements ActionListener{
 
     JPanel midPanel;
 
-    ListForMyGoals(JPanel midPanel){
+    ListForMyGoals(JPanel midPanel, String title){
         this.midPanel = midPanel;
 
         

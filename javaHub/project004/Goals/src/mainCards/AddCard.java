@@ -122,7 +122,7 @@ public class AddCard extends JPanel implements ActionListener {
         }
     }
 
-    private void buttonEnableControl(){
+    private void buttonEnableControl(){ //bug;
         if(goalCardContainer.getComponent(0).isVisible()){
             previousButton.setEnabled(false);
         }
