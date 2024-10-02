@@ -36,7 +36,8 @@ public class DBManagement {
     }
 
     private void establishConnection(){
-        final String url = "jdbc:mysql://localhost:3306/goals";
+        // final String url = "jdbc:mysql://localhost:3306/goals";
+        final String url = "jdbc:mysql://localhost:3307/goals"; //temp
 
         final String username = "root";
         final String password = "myPassword";

@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "j013_dynamicList",
+            "request": "launch",
+            "mainClass": "javaHub.FrameSwing.practice.j013_dynamicList",
+            "projectName": "CodeCollection_f013c959"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"

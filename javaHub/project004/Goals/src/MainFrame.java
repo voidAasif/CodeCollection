@@ -49,7 +49,7 @@ public class MainFrame extends JFrame {
         mainPanel.add(priority, "Priority");
 
         //temp
-        cardLayout.show(mainPanel, "AddCard");
+        cardLayout.show(mainPanel, "DashCard");
 
         //add mainPanel into frame;
         this.add(mainPanel);
