@@ -1,5 +1,8 @@
 package mainCards;
 import javax.swing.JPanel;
+
+import CustomComponent.ListItem;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.CardLayout;
@@ -9,11 +12,16 @@ import java.awt.BorderLayout;
 import javax.swing.ImageIcon;
 import java.awt.Image;
 import java.awt.event.ActionListener;
+import java.util.List;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import javax.swing.BoxLayout;
 
 import SoundControl.*;
+import CustomComponent.ListItem;
+import java.sql.Date;
+
+import DBase.DBManagement;
 
 public class MyGoals extends JPanel implements ActionListener {
     JPanel mainPanel;
@@ -64,15 +72,7 @@ public class MyGoals extends JPanel implements ActionListener {
         midPanel.setLayout(new BoxLayout(midPanel, BoxLayout.Y_AXIS));
         midPanel.setBackground(Color.ORANGE);
 
-
-        // code; //pending;
-
-
-
-
-
-
-
+        updateList();
 
         //control buttons for bottom panel;
         addButton = createButton(addButtonIcon);
@@ -122,20 +122,23 @@ public class MyGoals extends JPanel implements ActionListener {
         if(arg0.getSource() == addButton){
             soundEffect.playSound("/res/audio/buttonClick.wav");
             cardLayout.show(mainPanel, "AddCard"); //temp block navigation;
-            fetchDataFromDB(); //logic to make list updated;
+        }
+    }
+
+    private void updateList(){
+        DBManagement dbManagement = new DBManagement(); //receive name and end date to add into list Item;
+
+        List<String> nameList = dbManagement.getNameList();
+        List<Date> endDateList = dbManagement.getEndDateList();
+
+        for(int i=0; i<nameList.size(); i++){
+            midPanel.add(new ListItem(midPanel, nameList.get(i), endDateList.get(i)));
         }
 
+        this.revalidate();
+        this.repaint();
     }
 
-    private void fetchDataFromDB(){ //Control and time issue;
-
-        System.out.println("test"); //log;
-
-            // update list => match with DB;
-                //if new entry found then call newListLine and pass new data;
-    //     revalidate();
-    //     repaint();
-    }
 }
 
 

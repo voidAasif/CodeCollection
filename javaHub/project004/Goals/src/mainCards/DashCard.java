@@ -136,6 +136,8 @@ public class DashCard extends JPanel implements ActionListener {
             soundEffect.playSound("/res/audio/buttonClick.wav");
             cardLayout.show(mainPanel, "MyGoals");
 
+            // updateList();
+
         }
         if(arg0.getSource() == dailyTaskButton){ //open daily task page after click on this button;
             // System.out.println("dailyTask button clicked"); //log;
@@ -150,4 +152,9 @@ public class DashCard extends JPanel implements ActionListener {
 
         }
     } 
+
+
+    // private void updateList(){
+    //     //update list with DB;
+    // }
 }
