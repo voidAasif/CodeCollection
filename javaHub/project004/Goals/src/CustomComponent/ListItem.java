@@ -13,7 +13,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Date;
 
-import javax.swing.BoxLayout;
 
 public class ListItem extends JPanel implements ActionListener{
 

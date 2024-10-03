@@ -12,6 +12,8 @@ import java.awt.BorderLayout;
 import javax.swing.ImageIcon;
 import java.awt.Image;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 import java.util.List;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
@@ -38,6 +40,8 @@ public class MyGoals extends JPanel implements ActionListener {
     JPanel topPanel, midPanel, bottomPanel;
     JButton addButton;
 
+    JScrollPane midPanelScroll;
+
     SoundEffect soundEffect = new SoundEffect();
 
     public MyGoals(){
@@ -55,6 +59,21 @@ public class MyGoals extends JPanel implements ActionListener {
     private void initUI(){
         System.out.println("MY Goals"); //log;
         this.setLayout(new BorderLayout());
+        this.addComponentListener(new ComponentListener() {
+
+            @Override
+            public void componentHidden(ComponentEvent arg0) {}
+
+            @Override
+            public void componentMoved(ComponentEvent arg0) {}
+
+            @Override
+            public void componentResized(ComponentEvent arg0) {}
+
+            @Override
+            public void componentShown(ComponentEvent arg0) { updateList(); }
+            
+        });
 
         //buttons icons;
         
@@ -68,14 +87,14 @@ public class MyGoals extends JPanel implements ActionListener {
         topPanel.add(previousButton);
         topPanel.add(new JLabel("My Goals"));
 
-        //add midPanel into scrollPane; //pending;
         //midPanel to contains user goals list;
-        midPanel = new JPanel(); //pending;
+        midPanel = new JPanel();
         midPanel.setLayout(new BoxLayout(midPanel, BoxLayout.Y_AXIS));
-        // midPanel.add(Box.createRigidArea(new Dimension(0, 20)));
+        // midPanel.setPreferredSize(new Dimension(0, 650));
         // midPanel.setBackground(Color.ORANGE);
 
-        updateList();
+        //scrollPane to contain midPanel;
+        midPanelScroll = new JScrollPane(midPanel);
 
         //control buttons for bottom panel;
         addButton = createButton(addButtonIcon);
@@ -88,7 +107,7 @@ public class MyGoals extends JPanel implements ActionListener {
 
         //add components into this panel;
         this.add(topPanel, BorderLayout.NORTH);
-        this.add(new JScrollPane(midPanel), BorderLayout.CENTER);
+        this.add(midPanelScroll, BorderLayout.CENTER);
         this.add(bottomPanel, BorderLayout.SOUTH);
     }
 
@@ -129,18 +148,20 @@ public class MyGoals extends JPanel implements ActionListener {
     }
 
     private void updateList(){
+        midPanel.removeAll();
         DBManagement dbManagement = new DBManagement(); //receive name and end date to add into list Item;
 
         List<String> nameList = dbManagement.getNameList();
         List<Date> endDateList = dbManagement.getEndDateList();
 
+        System.out.println(nameList); //debug;
+
         for(int i=0; i<nameList.size(); i++){
-            midPanel.add(new ListItem(midPanel, nameList.get(i), endDateList.get(i)));
-            midPanel.add(Box.createVerticalStrut(10));
+            midPanel.add(new ListItem(midPanel, nameList.get(i), endDateList.get(i))); //add new listItem;
+            midPanel.add(Box.createVerticalStrut(10)); //add vertical gap between listItems;
+
         }
 
-        this.revalidate();
-        this.repaint();
     }
 
 }
