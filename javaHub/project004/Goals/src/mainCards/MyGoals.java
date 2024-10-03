@@ -16,9 +16,9 @@ import java.util.List;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import javax.swing.BoxLayout;
+import javax.swing.Box;
 
 import SoundControl.*;
-import CustomComponent.ListItem;
 import java.sql.Date;
 
 import DBase.DBManagement;
@@ -67,9 +67,11 @@ public class MyGoals extends JPanel implements ActionListener {
         topPanel.add(previousButton);
         topPanel.add(new JLabel("My Goals"));
 
+        //add midPanel into scrollPane; //pending;
         //midPanel to contains user goals list;
         midPanel = new JPanel(); //pending;
         midPanel.setLayout(new BoxLayout(midPanel, BoxLayout.Y_AXIS));
+        // midPanel.add(Box.createRigidArea(new Dimension(0, 20)));
         midPanel.setBackground(Color.ORANGE);
 
         updateList();
@@ -133,6 +135,7 @@ public class MyGoals extends JPanel implements ActionListener {
 
         for(int i=0; i<nameList.size(); i++){
             midPanel.add(new ListItem(midPanel, nameList.get(i), endDateList.get(i)));
+            midPanel.add(Box.createVerticalStrut(10));
         }
 
         this.revalidate();
