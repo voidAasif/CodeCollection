@@ -16,7 +16,6 @@ import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.util.List;
 import java.awt.event.ActionEvent;
-import java.awt.Color;
 import javax.swing.BoxLayout;
 import javax.swing.Box;
 import javax.swing.JScrollPane;
@@ -90,8 +89,6 @@ public class MyGoals extends JPanel implements ActionListener {
         //midPanel to contains user goals list;
         midPanel = new JPanel();
         midPanel.setLayout(new BoxLayout(midPanel, BoxLayout.Y_AXIS));
-        // midPanel.setPreferredSize(new Dimension(0, 650));
-        // midPanel.setBackground(Color.ORANGE);
 
         //scrollPane to contain midPanel;
         midPanelScroll = new JScrollPane(midPanel);
@@ -157,7 +154,7 @@ public class MyGoals extends JPanel implements ActionListener {
         System.out.println(nameList); //debug;
 
         for(int i=0; i<nameList.size(); i++){
-            midPanel.add(new ListItem(midPanel, nameList.get(i), endDateList.get(i))); //add new listItem;
+            midPanel.add(new ListItem(midPanel, midPanelScroll, nameList.get(i), endDateList.get(i))); //add new listItem;
             midPanel.add(Box.createVerticalStrut(10)); //add vertical gap between listItems;
 
             midPanelScroll.revalidate();

@@ -14,13 +14,17 @@ import java.awt.event.ActionListener;
 import java.sql.Date;
 import javax.swing.ImageIcon;
 import java.awt.Image;
+import javax.swing.JScrollPane;
 
 import SoundControl.SoundEffect;
+
+import DBase.DBManagement;
 
 
 public class ListItem extends JPanel implements ActionListener{
 
     JPanel midPanel; //to add this panel into midPanel;
+    JScrollPane midPanelScroll;
 
     JPanel labelContainer, buttonContainer;
     JLabel nameLabel, endDateLabel;
@@ -37,8 +41,9 @@ public class ListItem extends JPanel implements ActionListener{
 
     Color listTheme = new Color(0x123456);
 
-    public ListItem(JPanel midPanel, String goalName, Date goalEnd){
+    public ListItem(JPanel midPanel, JScrollPane midPanelScroll, String goalName, Date goalEnd){
         this.midPanel = midPanel;
+        this.midPanelScroll = midPanelScroll;
 
         this.setLayout(new BorderLayout());
         this.setMaximumSize(new Dimension(Integer.MAX_VALUE, 40)); 
@@ -55,7 +60,7 @@ public class ListItem extends JPanel implements ActionListener{
         labelContainer.add(nameLabel);
         labelContainer.add(endDateLabel);
 
-        buttonContainer = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 0));
+        buttonContainer = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 5));
         buttonContainer.setBackground(null);
 
         updateButton = createButton(updateButtonIcon);
@@ -102,13 +107,26 @@ public class ListItem extends JPanel implements ActionListener{
         if (arg0.getSource() == updateButton) {
             // System.out.println("Update"); // log;
             soundEffect.playSound("/res/audio/buttonClick.wav");
-            System.out.println("Update Goal Name: " + nameLabel.getText()); //update in DB;
-
+            // System.out.println("Update Goal Name: " + nameLabel.getText()); //update in DB;
+            //show popup inputs to update listItem;
         }
         if (arg0.getSource() == deleteButton) {
             // System.out.println("Delete"); // log;
             soundEffect.playSound("/res/audio/buttonClick.wav");
-            System.out.println("Delete Goal Name: " + nameLabel.getText()); //delete from DB;
+            // System.out.println("Delete Goal Name: " + nameLabel.getText()); //delete from DB;
+
+            //i am here right now;
+
+            DBManagement dbManagement = new DBManagement();
+            boolean deleteFlag = dbManagement.deleteGoal(nameLabel.getText());
+            if(deleteFlag){
+                midPanel.remove(this); //if remove from DB then remove this from List;
+
+                midPanelScroll.revalidate(); //small bug while revalidating scrollPane after delete listItem;
+                midPanelScroll.repaint();
+                midPanel.revalidate();
+                midPanel.repaint();
+            }
         }
     }
     

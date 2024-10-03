@@ -138,4 +138,24 @@ public class DBManagement {
 
         return endList;
     }
+
+    public boolean deleteGoal(String goalName){
+        boolean deleteFlag = true;
+        final String deleteQuery = "DELETE FROM goalsData WHERE goalName = ?;";
+
+        try (
+            PreparedStatement deleteEntry = dbConnection.prepareStatement(deleteQuery);
+        ) {
+            deleteEntry.setString(1, goalName);
+            deleteEntry.executeUpdate();
+
+            System.err.println("Goal Deleted");
+        } catch (SQLException e) {
+            e.printStackTrace();
+            deleteFlag = false;
+            System.err.println("Error while deleting Goal");
+        }
+
+        return deleteFlag;
+    }
 }
