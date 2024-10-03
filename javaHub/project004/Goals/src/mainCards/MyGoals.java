@@ -17,6 +17,7 @@ import java.awt.event.ActionEvent;
 import java.awt.Color;
 import javax.swing.BoxLayout;
 import javax.swing.Box;
+import javax.swing.JScrollPane;
 
 import SoundControl.*;
 import java.sql.Date;
@@ -72,7 +73,7 @@ public class MyGoals extends JPanel implements ActionListener {
         midPanel = new JPanel(); //pending;
         midPanel.setLayout(new BoxLayout(midPanel, BoxLayout.Y_AXIS));
         // midPanel.add(Box.createRigidArea(new Dimension(0, 20)));
-        midPanel.setBackground(Color.ORANGE);
+        // midPanel.setBackground(Color.ORANGE);
 
         updateList();
 
@@ -87,7 +88,7 @@ public class MyGoals extends JPanel implements ActionListener {
 
         //add components into this panel;
         this.add(topPanel, BorderLayout.NORTH);
-        this.add(midPanel, BorderLayout.CENTER);
+        this.add(new JScrollPane(midPanel), BorderLayout.CENTER);
         this.add(bottomPanel, BorderLayout.SOUTH);
     }
 

@@ -6,6 +6,7 @@ import javax.swing.JLabel;
 
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -25,18 +26,23 @@ public class ListItem extends JPanel implements ActionListener{
     public ListItem(JPanel midPanel, String goalName, Date goalEnd){
         this.midPanel = midPanel;
 
-        this.setLayout(new FlowLayout(FlowLayout.CENTER, 100, 0));
+        this.setLayout(new BorderLayout());
+        this.setMaximumSize(new Dimension(Integer.MAX_VALUE, 30)); 
         this.setPreferredSize(new Dimension(0, 0));
-        this.setBackground(Color.RED);
+        this.setBackground(Color.LIGHT_GRAY);
 
-        labelContainer = new JPanel(new FlowLayout(FlowLayout.CENTER, 30, 0));
-        nameLabel = new JLabel(goalName);
-        endDateLabel = new JLabel(String.valueOf(goalEnd));
+        labelContainer = new JPanel(new FlowLayout(FlowLayout.RIGHT, 50, 0));
+        labelContainer.setBackground(null);
+
+        nameLabel = createLabel(goalName);
+        endDateLabel = createLabel(String.valueOf(goalEnd));
 
         labelContainer.add(nameLabel);
         labelContainer.add(endDateLabel);
 
         buttonContainer = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 0));
+        buttonContainer.setBackground(null);
+
         updateButton = createButton("Update");
         updateButton.addActionListener(this);
 
@@ -46,14 +52,21 @@ public class ListItem extends JPanel implements ActionListener{
         buttonContainer.add(updateButton);
         buttonContainer.add(deleteButton);
 
-        this.add(labelContainer);
-        this.add(buttonContainer);
+        this.add(labelContainer, BorderLayout.WEST);
+        this.add(buttonContainer, BorderLayout.EAST);
 
         midPanel.add(this);
         midPanel.revalidate();
         midPanel.repaint();
 
     } //end constructor;
+
+    private JLabel createLabel(String labelName){
+        JLabel label = new JLabel(labelName);
+        label.setFont(new Font("Monospaced", Font.PLAIN, 20));
+
+        return label;
+    }
 
     private JButton createButton(String btnName){
         JButton button = new JButton(btnName);
@@ -62,10 +75,14 @@ public class ListItem extends JPanel implements ActionListener{
         return button;
     }
 
-
-
-
     @Override
-    public void actionPerformed(ActionEvent arg0) {}
+    public void actionPerformed(ActionEvent arg0) {
+        if (arg0.getSource() == updateButton) {
+            System.out.println("Update"); // log;
+        }
+        if (arg0.getSource() == deleteButton) {
+            System.out.println("Delete"); // log;
+        }
+    }
     
 }
