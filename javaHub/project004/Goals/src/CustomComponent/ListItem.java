@@ -27,7 +27,7 @@ public class ListItem extends JPanel implements ActionListener{
 
         this.setLayout(new BorderLayout());
         this.setMaximumSize(new Dimension(Integer.MAX_VALUE, 30)); 
-        this.setPreferredSize(new Dimension(0, 0));
+        // this.setPreferredSize(new Dimension(0, 0));
         this.setBackground(Color.LIGHT_GRAY);
 
         labelContainer = new JPanel(new FlowLayout(FlowLayout.RIGHT, 50, 0));

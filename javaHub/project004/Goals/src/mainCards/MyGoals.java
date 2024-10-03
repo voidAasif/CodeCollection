@@ -160,6 +160,9 @@ public class MyGoals extends JPanel implements ActionListener {
             midPanel.add(new ListItem(midPanel, nameList.get(i), endDateList.get(i))); //add new listItem;
             midPanel.add(Box.createVerticalStrut(10)); //add vertical gap between listItems;
 
+            midPanelScroll.revalidate();
+            midPanelScroll.repaint();
+
         }
 
     }
