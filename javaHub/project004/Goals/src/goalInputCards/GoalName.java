@@ -90,6 +90,7 @@ public class GoalName extends JPanel {
 
     public void setGoalName() {
         this.input_goalName = goalField.getText();
+        goalField.setText(""); //reset field;
     }
 
     public String getGoalName() {

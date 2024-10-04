@@ -115,14 +115,17 @@ public class AddCard extends JPanel implements ActionListener {
             buttonEnableControl();
         }
         if(arg0.getSource() == finalButton){ //change mainCards and manage cards data after final click;
+            goalCardContainerLayout.first(goalCardContainer);
             cardLayout.show(mainPanel, "DashCard");
             soundEffect.playSound("/res/audio/buttonClick.wav");
+
+            buttonEnableControl();
 
             setInputGoal(); //send data on DB;
         }
     }
 
-    private void buttonEnableControl(){ //bug;
+    private void buttonEnableControl(){
         if(goalCardContainer.getComponent(0).isVisible()){
             previousButton.setEnabled(false);
         }
@@ -135,6 +138,8 @@ public class AddCard extends JPanel implements ActionListener {
             finalButton.setEnabled(true);
         }
         else {
+            bottomPanel.remove(finalButton);
+            bottomPanel.add(nextButton);
             nextButton.setEnabled(true);
         }
 

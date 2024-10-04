@@ -93,6 +93,7 @@ public class GoalDesc extends JPanel{
 
     public void setGoalDesc() {
         this.input_goalDesc = goalTextArea.getText();
+        goalTextArea.setText(""); //reset textArea;
     }
 
     public String getGoalDesc() {
