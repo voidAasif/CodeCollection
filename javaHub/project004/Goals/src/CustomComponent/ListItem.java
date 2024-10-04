@@ -3,6 +3,8 @@ package CustomComponent;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JDialog;
 
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -15,22 +17,22 @@ import java.sql.Date;
 import javax.swing.ImageIcon;
 import java.awt.Image;
 import javax.swing.JScrollPane;
+import javax.swing.JTextField;
 
 import SoundControl.SoundEffect;
 
 import DBase.DBManagement;
 
+public class ListItem extends JPanel implements ActionListener {
 
-public class ListItem extends JPanel implements ActionListener{
-
-    JPanel midPanel; //to add this panel into midPanel;
+    JPanel midPanel; // to add this panel into midPanel;
     JScrollPane midPanelScroll;
 
     JPanel labelContainer, buttonContainer;
     JLabel nameLabel, endDateLabel;
     JButton updateButton, deleteButton;
 
-    //icons for buttons;
+    // icons for buttons;
     ImageIcon updateButtonIcon = new ImageIcon(getClass().getResource("/res/icons/updateButton.png"));
     ImageIcon deleteButtonIcon = new ImageIcon(getClass().getResource("/res/icons/deleteButton.png"));
 
@@ -41,16 +43,20 @@ public class ListItem extends JPanel implements ActionListener{
 
     Color listTheme = new Color(0x123456);
 
-    public ListItem(JPanel midPanel, JScrollPane midPanelScroll, String goalName, Date goalEnd){
+    JDialog inputDialog;
+
+    String oldGoalName;
+
+    public ListItem(JPanel midPanel, JScrollPane midPanelScroll, String goalName, Date goalEnd) {
         this.midPanel = midPanel;
         this.midPanelScroll = midPanelScroll;
+        this.oldGoalName = goalName;
 
         this.setLayout(new BorderLayout());
-        this.setMaximumSize(new Dimension(Integer.MAX_VALUE, 40)); 
-        // this.setPreferredSize(new Dimension(0, 0));
+        this.setMaximumSize(new Dimension(Integer.MAX_VALUE, 40));
         this.setBackground(Color.LIGHT_GRAY);
 
-        labelContainer = new JPanel(new FlowLayout(FlowLayout.LEFT, 80, 5));
+        labelContainer = new JPanel(new FlowLayout(FlowLayout.LEFT, 80, 8));
         // labelContainer.setBackground(null);
         labelContainer.setBackground(listTheme);
 
@@ -79,9 +85,9 @@ public class ListItem extends JPanel implements ActionListener{
         midPanel.revalidate();
         midPanel.repaint();
 
-    } //end constructor;
+    } // end constructor;
 
-    private JLabel createLabel(String labelName){
+    private JLabel createLabel(String labelName) {
         JLabel label = new JLabel(labelName);
         label.setFont(new Font("Monospaced", Font.PLAIN, 20));
         label.setForeground(Color.WHITE);
@@ -89,7 +95,7 @@ public class ListItem extends JPanel implements ActionListener{
         return label;
     }
 
-    private JButton createButton(ImageIcon buttonIcon){
+    private JButton createButton(ImageIcon buttonIcon) {
         JButton button = new JButton();
         buttonIcon.setImage(buttonIcon.getImage().getScaledInstance(buttonWidth, buttonHeight, Image.SCALE_SMOOTH));
         button.setIcon(buttonIcon);
@@ -107,27 +113,65 @@ public class ListItem extends JPanel implements ActionListener{
         if (arg0.getSource() == updateButton) {
             // System.out.println("Update"); // log;
             soundEffect.playSound("/res/audio/buttonClick.wav");
-            // System.out.println("Update Goal Name: " + nameLabel.getText()); //update in DB;
-            //show popup inputs to update listItem;
+
+            // show popup inputs to update listItem;
+
+            JTextField goalNameField = new JTextField();
+            Object[] message = {
+                    "Enter New GoalName:", goalNameField
+            };
+
+            int option = JOptionPane.showOptionDialog(
+                                                        this, // Parent;
+                                                        message, // The message containing the text field;
+                                                        "Update", // Title of the dialog;
+                                                        JOptionPane.OK_OPTION, // Option type (only "Confirm" button);
+                                                        JOptionPane.INFORMATION_MESSAGE, // Message type;
+                                                        updateButtonIcon, // Update button icon;
+                                                        new String[] { "Confirm" }, // Custom button labels;
+                                                        "Confirm"); // Initial selection (pre-selected option);
+
+            if (option == JOptionPane.OK_OPTION) {
+                String newGoalName = goalNameField.getText();
+                // Handle the new goal name input
+                if (!newGoalName.isEmpty()) {
+                    System.out.println(newGoalName);
+
+                    updateName(newGoalName, oldGoalName);
+                }
+            }
         }
         if (arg0.getSource() == deleteButton) {
             // System.out.println("Delete"); // log;
             soundEffect.playSound("/res/audio/buttonClick.wav");
-            // System.out.println("Delete Goal Name: " + nameLabel.getText()); //delete from DB;
-
-            //i am here right now;
 
             DBManagement dbManagement = new DBManagement();
             boolean deleteFlag = dbManagement.deleteGoal(nameLabel.getText());
-            if(deleteFlag){
-                midPanel.remove(this); //if remove from DB then remove this from List;
+            if (deleteFlag) {
+                midPanel.remove(this); // if remove from DB then remove this from List;
 
-                midPanelScroll.revalidate(); //small bug while revalidating scrollPane after delete listItem;
-                midPanelScroll.repaint();
-                midPanel.revalidate();
-                midPanel.repaint();
+                refreshList();
             }
         }
     }
-    
+
+    private void updateName(String newGoalName, String oldGoalName){
+        DBManagement dbManagement = new DBManagement();
+
+        boolean updateFlag = dbManagement.updateGoal(newGoalName, oldGoalName);
+
+        if(updateFlag){
+            nameLabel.setText(newGoalName);
+
+            refreshList();
+        }
+    }
+
+    private void refreshList(){
+        midPanelScroll.revalidate(); // small bug while revalidating scrollPane after delete listItem;
+        midPanelScroll.repaint();
+        midPanel.revalidate();
+        midPanel.repaint();
+    }
+
 }

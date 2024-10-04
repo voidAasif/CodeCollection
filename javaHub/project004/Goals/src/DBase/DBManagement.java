@@ -158,4 +158,27 @@ public class DBManagement {
 
         return deleteFlag;
     }
+
+    public boolean updateGoal(String newGoalName, String oldGoalName){
+
+        boolean updateFlag = true;
+        final String deleteQuery = "UPDATE goalsData SET goalName = ? WHERE goalName = ?;";
+
+        try (
+            PreparedStatement updateEntry = dbConnection.prepareStatement(deleteQuery);
+        ) {
+            updateEntry.setString(1, newGoalName);
+            updateEntry.setString(2, oldGoalName);
+
+            updateEntry.executeUpdate();
+
+            System.err.println("Goal Updated");
+        } catch (SQLException e) {
+            e.printStackTrace();
+            updateFlag = false;
+            System.err.println("Error while Updating Goal");
+        }
+
+        return updateFlag;
+    }
 }
