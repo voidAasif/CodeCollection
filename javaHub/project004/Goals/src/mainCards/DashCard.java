@@ -148,7 +148,7 @@ public class DashCard extends JPanel implements ActionListener {
         if(arg0.getSource() == priorityButton){ //open priority page after click on this button;
             // System.out.println("priority button clicked"); //log;
             soundEffect.playSound("/res/audio/buttonClick.wav");
-            // cardLayout.show(mainPanel, "Priority");
+            cardLayout.show(mainPanel, "Priority");
 
         }
     } 
