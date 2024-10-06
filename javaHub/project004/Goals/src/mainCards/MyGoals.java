@@ -1,7 +1,7 @@
 package mainCards;
 import javax.swing.JPanel;
 
-import CustomComponent.ListItem;
+import CustomComponent.MyGoalsListItem;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -155,7 +155,7 @@ public class MyGoals extends JPanel implements ActionListener {
         System.out.println(nameList); //debug;
 
         for(int i=0; i<nameList.size(); i++){
-            midPanel.add(new ListItem(midPanel, midPanelScroll, nameList.get(i), endDateList.get(i))); //add new listItem;
+            midPanel.add(new MyGoalsListItem(midPanel, midPanelScroll, nameList.get(i), endDateList.get(i))); //add new listItem;
             midPanel.add(Box.createVerticalStrut(10)); //add vertical gap between listItems;
 
             midPanelScroll.revalidate();

@@ -23,7 +23,7 @@ import SoundControl.SoundEffect;
 
 import DBase.DBManagement;
 
-public class ListItem extends JPanel implements ActionListener {
+public class MyGoalsListItem extends JPanel implements ActionListener {
 
     JPanel midPanel; // to add this panel into midPanel;
     JScrollPane midPanelScroll;
@@ -47,7 +47,7 @@ public class ListItem extends JPanel implements ActionListener {
 
     String oldGoalName;
 
-    public ListItem(JPanel midPanel, JScrollPane midPanelScroll, String goalName, Date goalEnd) {
+    public MyGoalsListItem(JPanel midPanel, JScrollPane midPanelScroll, String goalName, Date goalEnd) {
         this.midPanel = midPanel;
         this.midPanelScroll = midPanelScroll;
         this.oldGoalName = goalName;

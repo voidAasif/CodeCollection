@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 
+import DBase.DBManagement;
 import SoundControl.SoundEffect;
 
 import javax.swing.BorderFactory;
@@ -18,7 +19,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 
-public class ListRadio extends JPanel implements ActionListener{ //cards for priority items;
+public class PriorityListItem extends JPanel implements ActionListener{ //cards for priority items;
     JPanel midPanel;
     JScrollPane midPanelScroll;
     String goalName;
@@ -34,7 +35,7 @@ public class ListRadio extends JPanel implements ActionListener{ //cards for pri
 
     Color themeColor = new Color(0x123456);
     
-    public ListRadio(JPanel midPanel, JScrollPane midPanelScroll, String goalName){
+    public PriorityListItem(JPanel midPanel, JScrollPane midPanelScroll, String goalName){
         this.midPanel = midPanel;
         this.midPanelScroll = midPanelScroll;
         this.goalName = goalName;
@@ -87,7 +88,18 @@ public class ListRadio extends JPanel implements ActionListener{ //cards for pri
     public void actionPerformed(ActionEvent arg0) {
         if(arg0.getSource() == addButton){
             soundEffect.playSound("/res/audio/buttonClick.wav");
-            // do something 
+            
+            addPriorityGoal(goalNameLabel.getText());
+        }
+    }
+
+    private void addPriorityGoal(String goalName){
+        DBManagement dbManagement = new DBManagement();
+
+        boolean addFlag = dbManagement.addPriorityGoal(goalName);
+
+        if(addFlag){
+            System.out.println("Priority Goal Added"); //log;
         }
     }
 }

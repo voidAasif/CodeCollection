@@ -22,8 +22,8 @@ import javax.swing.BoxLayout;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 
-import CustomComponent.ListItem;
-import CustomComponent.ListRadio;
+import CustomComponent.MyGoalsListItem;
+import CustomComponent.PriorityListItem;
 import DBase.DBManagement;
 import SoundControl.*;
 
@@ -135,7 +135,7 @@ public class Priority extends JPanel implements ActionListener{
         System.out.println(nameList); //debug;
 
         for(int i=0; i<nameList.size(); i++){
-            midPanel.add(new ListRadio(midPanel, midPanelScroll, nameList.get(i))); //add new ListRadio;
+            midPanel.add(new PriorityListItem(midPanel, midPanelScroll, nameList.get(i))); //add new ListRadio;
             midPanel.add(Box.createVerticalStrut(10));
 
             midPanelScroll.revalidate();

@@ -162,10 +162,10 @@ public class DBManagement {
     public boolean updateGoal(String newGoalName, String oldGoalName){
 
         boolean updateFlag = true;
-        final String deleteQuery = "UPDATE goalsData SET goalName = ? WHERE goalName = ?;";
+        final String updateQuery = "UPDATE goalsData SET goalName = ? WHERE goalName = ?;";
 
         try (
-            PreparedStatement updateEntry = dbConnection.prepareStatement(deleteQuery);
+            PreparedStatement updateEntry = dbConnection.prepareStatement(updateQuery);
         ) {
             updateEntry.setString(1, newGoalName);
             updateEntry.setString(2, oldGoalName);
@@ -180,5 +180,54 @@ public class DBManagement {
         }
 
         return updateFlag;
+    }
+
+    public boolean addPriorityGoal(String goalName){ //used by priorityListItem;
+
+        boolean addFlag = true;
+        final String fetchQuery = "SELECT goalId, goalName FROM goalsData;";
+
+        try (
+            PreparedStatement fetchStmt = dbConnection.prepareStatement(fetchQuery);
+            ResultSet fetchEntry = fetchStmt.executeQuery(fetchQuery);
+        ) {
+
+            while (fetchEntry.next()) {
+                int goalId = fetchEntry.getInt("goalId");
+                String goalNameDB = fetchEntry.getString("goalName");
+
+                if (goalName.equals(goalNameDB)) {
+                    addEntry(goalName, goalId);
+                }
+            }
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+            addFlag = false;
+            System.err.println("Error while Updating Priority Goal");
+        }
+
+        return addFlag;
+    }
+
+    private void addEntry(String goalName, int goalId){
+        final String clearQuery = "DELETE FROM priorityGoal;";
+        final String insertQuery = "INSERT INTO priorityGoal (goalName, goalId) VALUES (?, ?);";
+
+        try (
+            PreparedStatement clearEntry = dbConnection.prepareStatement(clearQuery);
+            PreparedStatement updateEntry = dbConnection.prepareStatement(insertQuery);
+        ) {
+            updateEntry.setString(1, goalName);
+            updateEntry.setInt(2, goalId);
+
+            clearEntry.executeUpdate(); //now only one item added at a time;
+            updateEntry.executeUpdate();
+
+            System.err.println("Priority inserted into table");
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.err.println("Error while inserting priority Goal");
+        }
     }
 }
