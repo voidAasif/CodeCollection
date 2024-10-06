@@ -6,16 +6,25 @@ import javax.swing.JLabel;
 import java.awt.CardLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.BorderLayout;
 import javax.swing.ImageIcon;
 import java.awt.Image;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
+import java.sql.Date;
+import java.util.List;
 import java.awt.event.ActionEvent;
+
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
 
+import CustomComponent.ListItem;
+import CustomComponent.ListRadio;
+import DBase.DBManagement;
 import SoundControl.*;
 
 public class Priority extends JPanel implements ActionListener{
@@ -61,7 +70,7 @@ public class Priority extends JPanel implements ActionListener{
             public void componentResized(ComponentEvent arg0) {}
 
             @Override
-            public void componentShown(ComponentEvent arg0) { }
+            public void componentShown(ComponentEvent arg0) { updateList(); }
             
         });
 
@@ -79,7 +88,9 @@ public class Priority extends JPanel implements ActionListener{
 
         //midPanel to contains user goals list;
         midPanel = new JPanel();
+        // midPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         midPanel.setLayout(new BoxLayout(midPanel, BoxLayout.Y_AXIS));
+        
 
         // add goalNames with checkBoxes to select the task which is show on dashBoard;
         // i am here right now;
@@ -87,6 +98,7 @@ public class Priority extends JPanel implements ActionListener{
 
         //scrollPane to contain midPanel;
         midPanelScroll = new JScrollPane(midPanel);
+        midPanelScroll.setBorder(null);
 
         //add components into this panel;
         this.add(topPanel, BorderLayout.NORTH);
@@ -112,5 +124,24 @@ public class Priority extends JPanel implements ActionListener{
             soundEffect.playSound("/res/audio/buttonClick.wav");
             cardLayout.show(mainPanel, "DashCard");
         }
+    }
+
+    private void updateList(){
+        midPanel.removeAll();
+        DBManagement dbManagement = new DBManagement(); //receive name and end date to add into list Item;
+
+        List<String> nameList = dbManagement.getNameList();
+
+        System.out.println(nameList); //debug;
+
+        for(int i=0; i<nameList.size(); i++){
+            midPanel.add(new ListRadio(midPanel, midPanelScroll, nameList.get(i))); //add new ListRadio;
+            midPanel.add(Box.createVerticalStrut(10));
+
+            midPanelScroll.revalidate();
+            midPanelScroll.repaint();
+
+        }
+
     }
 }

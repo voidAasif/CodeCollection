@@ -92,6 +92,7 @@ public class MyGoals extends JPanel implements ActionListener {
 
         //scrollPane to contain midPanel;
         midPanelScroll = new JScrollPane(midPanel);
+        midPanelScroll.setBorder(null);
 
         //control buttons for bottom panel;
         addButton = createButton(addButtonIcon);
