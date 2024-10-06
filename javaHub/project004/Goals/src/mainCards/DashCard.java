@@ -156,7 +156,7 @@ public class DashCard extends JPanel implements ActionListener, ComponentListene
         if(arg0.getSource() == dailyTaskButton){ //open daily task page after click on this button;
             // System.out.println("dailyTask button clicked"); //log;
             soundEffect.playSound("/res/audio/buttonClick.wav");
-            // cardLayout.show(mainPanel, "Todo");
+            cardLayout.show(mainPanel, "Todo");
 
         }
         if(arg0.getSource() == priorityButton){ //open priority page after click on this button;

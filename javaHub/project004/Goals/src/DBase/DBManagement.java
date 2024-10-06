@@ -54,7 +54,7 @@ public class DBManagement {
 
         try {
             dbConnection = DriverManager.getConnection(url, username, password);
-            System.out.println("Connection Established Successfully"); //log;
+            // System.out.println("Connection Established Successfully"); //log;
 
             // dbConnection.close(); //temp stay open the connection;
         } 

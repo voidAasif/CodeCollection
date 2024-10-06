@@ -86,11 +86,6 @@ public class Priority extends JPanel implements ActionListener{
         midPanel = new JPanel();
         // midPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
         midPanel.setLayout(new BoxLayout(midPanel, BoxLayout.Y_AXIS));
-        
-
-        // add goalNames with checkBoxes to select the task which is show on dashBoard;
-        // i am here right now;
-
 
         //scrollPane to contain midPanel;
         midPanelScroll = new JScrollPane(midPanel);
@@ -124,7 +119,7 @@ public class Priority extends JPanel implements ActionListener{
 
     private void updateList(){
         midPanel.removeAll();
-        DBManagement dbManagement = new DBManagement(); //receive name and end date to add into list Item;
+        DBManagement dbManagement = new DBManagement(); //receive name to add into list Item;
 
         List<String> nameList = dbManagement.getNameList();
 
