@@ -112,7 +112,7 @@ public class MyGoalsListItem extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent arg0) {
         if (arg0.getSource() == updateButton) {
             // System.out.println("Update"); // log;
-            soundEffect.playSound("/res/audio/buttonClick.wav");
+            soundEffect.playSound("/res/audio/updateButton.wav");
 
             // show popup inputs to update listItem;
 
@@ -143,7 +143,7 @@ public class MyGoalsListItem extends JPanel implements ActionListener {
         }
         if (arg0.getSource() == deleteButton) {
             // System.out.println("Delete"); // log;
-            soundEffect.playSound("/res/audio/buttonClick.wav");
+            soundEffect.playSound("/res/audio/deleteButton.wav");
 
             DBManagement dbManagement = new DBManagement();
             boolean deleteFlag = dbManagement.deleteGoal(nameLabel.getText());

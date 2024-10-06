@@ -87,7 +87,7 @@ public class PriorityListItem extends JPanel implements ActionListener{ //cards 
     @Override
     public void actionPerformed(ActionEvent arg0) {
         if(arg0.getSource() == addButton){
-            soundEffect.playSound("/res/audio/buttonClick.wav");
+            soundEffect.playSound("/res/audio/addButton.wav");
             
             addPriorityGoal(goalNameLabel.getText());
         }

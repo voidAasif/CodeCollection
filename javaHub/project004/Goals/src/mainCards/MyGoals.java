@@ -136,11 +136,11 @@ public class MyGoals extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent arg0) {
         if(arg0.getSource() == previousButton){
-            soundEffect.playSound("/res/audio/buttonClick.wav");
+            soundEffect.playSound("/res/audio/slides.wav");
             cardLayout.show(mainPanel, "DashCard");
         }
         if(arg0.getSource() == addButton){
-            soundEffect.playSound("/res/audio/buttonClick.wav");
+            soundEffect.playSound("/res/audio/addButton.wav");
             cardLayout.show(mainPanel, "AddCard"); //temp block navigation;
         }
     }

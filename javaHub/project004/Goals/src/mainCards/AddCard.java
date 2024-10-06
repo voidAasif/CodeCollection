@@ -104,20 +104,20 @@ public class AddCard extends JPanel implements ActionListener {
 
         if(arg0.getSource() == nextButton){ //change goalInputCards;
             goalCardContainerLayout.next(goalCardContainer);
-            soundEffect.playSound("/res/audio/buttonClick.wav");
+            soundEffect.playSound("/res/audio/slides.wav");
             
             buttonEnableControl();
         }
         if(arg0.getSource() == previousButton){ //change goalInputCards;
             goalCardContainerLayout.previous(goalCardContainer);
-            soundEffect.playSound("/res/audio/buttonClick.wav");
+            soundEffect.playSound("/res/audio/slides.wav");
             
             buttonEnableControl();
         }
         if(arg0.getSource() == finalButton){ //change mainCards and manage cards data after final click;
             goalCardContainerLayout.first(goalCardContainer);
             cardLayout.show(mainPanel, "DashCard");
-            soundEffect.playSound("/res/audio/buttonClick.wav");
+            soundEffect.playSound("/res/audio/slides.wav");
 
             buttonEnableControl();
 

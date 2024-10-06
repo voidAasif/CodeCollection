@@ -107,7 +107,7 @@ public class StartupCard extends JPanel implements ActionListener{
     public void actionPerformed(ActionEvent arg0) {
         if(arg0.getSource() == addGoalButton){
             clickEffect();
-            soundEffect.playSound("/res/audio/buttonClick.wav");
+            soundEffect.playSound("/res/audio/addButton.wav");
             
             Timer timer = new Timer(400, new ActionListener() {
                 @Override
