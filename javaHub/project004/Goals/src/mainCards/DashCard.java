@@ -1,6 +1,8 @@
 package mainCards;
 import javax.swing.JPanel;
 
+import DBase.DBManagement;
+
 import javax.swing.JButton;
 import java.awt.CardLayout;
 import java.awt.BorderLayout;
@@ -12,11 +14,19 @@ import java.awt.Color;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import java.sql.Date;
+
 import javax.swing.JLabel;
 
 import SoundControl.*;
 
-public class DashCard extends JPanel implements ActionListener {
+public class DashCard extends JPanel implements ActionListener, ComponentListener{
 
     JPanel mainPanel;
     CardLayout cardLayout;
@@ -37,6 +47,8 @@ public class DashCard extends JPanel implements ActionListener {
     //dashBoard display data;
     JLabel goalName, endDate, countDown;
     JPanel container1, innerContainer1, container2, dateContainer;
+
+    Date goalEndDate;
     
     public DashCard(){
         initUI();
@@ -52,6 +64,8 @@ public class DashCard extends JPanel implements ActionListener {
     private void initUI(){
         this.setLayout(new BorderLayout(0, 50));
         this.setBackground(dashTheme);
+
+        this.addComponentListener(this);
 
         topPanel = new JPanel(new FlowLayout(FlowLayout.LEADING, 20, 20));
         topPanel.setBackground(null);
@@ -71,15 +85,15 @@ public class DashCard extends JPanel implements ActionListener {
         topPanel.add(priorityButton);
 
         //component for bottom panel;
-        goalName = new JLabel("ABC Goal"); //demo data;
+        goalName = new JLabel("No Goal Selected"); //default data;
         goalName.setFont(new Font("Arial", Font.BOLD, 35));
         goalName.setBackground(null);
 
-        endDate = new JLabel("00-00-0000"); //demo data;
+        endDate = new JLabel("00-00-0000"); //default data;
         endDate.setFont(new Font("Arial", Font.BOLD, 25));
         endDate.setBackground(null);
 
-        countDown = new JLabel("365"); //demo data;
+        countDown = new JLabel("000"); //default data;
         countDown.setFont(new Font("Arial", Font.BOLD, 200));
         countDown.setBackground(null);
 
@@ -151,10 +165,47 @@ public class DashCard extends JPanel implements ActionListener {
             cardLayout.show(mainPanel, "Priority");
 
         }
-    } 
+    }
 
+    @Override public void componentHidden(ComponentEvent e) {}
 
-    // private void updateList(){
-    //     //update list with DB;
-    // }
+    @Override public void componentMoved(ComponentEvent e) {}
+
+    @Override public void componentResized(ComponentEvent e) {}
+
+    @Override public void componentShown(ComponentEvent e) { setDashData(); setCountDown(); } 
+
+    private void setDashData(){
+        DBManagement dbManagement = new DBManagement();
+        List<String> dashDataList = new ArrayList<>();
+
+        dashDataList = dbManagement.getDashData();
+
+        goalName.setText(dashDataList.get(0));
+        endDate.setText(dashDataList.get(1));
+
+        goalEndDate = Date.valueOf(dashDataList.get(1));
+
+        this.revalidate();
+        this.repaint();
+    }
+
+    private void setCountDown(){
+
+        Date todayDate = new Date(System.currentTimeMillis());
+
+        // Calculate the difference in milliseconds
+        long diffInMillis = goalEndDate.getTime() - todayDate.getTime();
+
+        // Convert the difference in milliseconds to days
+        long remainingDays = TimeUnit.MILLISECONDS.toDays(diffInMillis);
+
+        String days = String.valueOf(remainingDays);
+
+        countDown.setText(days);
+
+        this.revalidate();
+        this.repaint();
+    }
+
 }

@@ -6,23 +6,19 @@ import javax.swing.JLabel;
 import java.awt.CardLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.GridLayout;
 import java.awt.BorderLayout;
 import javax.swing.ImageIcon;
 import java.awt.Image;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
-import java.sql.Date;
 import java.util.List;
 import java.awt.event.ActionEvent;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JScrollPane;
-import javax.swing.ScrollPaneConstants;
 
-import CustomComponent.MyGoalsListItem;
 import CustomComponent.PriorityListItem;
 import DBase.DBManagement;
 import SoundControl.*;

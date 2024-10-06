@@ -185,7 +185,7 @@ public class DBManagement {
     public boolean addPriorityGoal(String goalName){ //used by priorityListItem;
 
         boolean addFlag = true;
-        final String fetchQuery = "SELECT goalId, goalName FROM goalsData;";
+        final String fetchQuery = "SELECT goalId, goalName, goalEnd FROM goalsData;";
 
         try (
             PreparedStatement fetchStmt = dbConnection.prepareStatement(fetchQuery);
@@ -195,9 +195,10 @@ public class DBManagement {
             while (fetchEntry.next()) {
                 int goalId = fetchEntry.getInt("goalId");
                 String goalNameDB = fetchEntry.getString("goalName");
+                Date goalEnd = fetchEntry.getDate("goalEnd");
 
                 if (goalName.equals(goalNameDB)) {
-                    addEntry(goalName, goalId);
+                    addEntry(goalName, goalEnd, goalId);
                 }
             }
             
@@ -210,16 +211,17 @@ public class DBManagement {
         return addFlag;
     }
 
-    private void addEntry(String goalName, int goalId){
+    private void addEntry(String goalName, Date goalEnd, int goalId){
         final String clearQuery = "DELETE FROM priorityGoal;";
-        final String insertQuery = "INSERT INTO priorityGoal (goalName, goalId) VALUES (?, ?);";
+        final String insertQuery = "INSERT INTO priorityGoal (goalName, goalEnd, goalId) VALUES (?, ?, ?);";
 
         try (
             PreparedStatement clearEntry = dbConnection.prepareStatement(clearQuery);
             PreparedStatement updateEntry = dbConnection.prepareStatement(insertQuery);
         ) {
             updateEntry.setString(1, goalName);
-            updateEntry.setInt(2, goalId);
+            updateEntry.setDate(2, goalEnd);
+            updateEntry.setInt(3, goalId);
 
             clearEntry.executeUpdate(); //now only one item added at a time;
             updateEntry.executeUpdate();
@@ -229,5 +231,30 @@ public class DBManagement {
             e.printStackTrace();
             System.err.println("Error while inserting priority Goal");
         }
+    }
+
+    public List<String> getDashData(){ //used by dashCard;
+        // fetch name and end date form priorityGoal table;
+
+        final String fetchQuery = "SELECT goalName, goalEnd FROM priorityGoal;";
+
+        List<String> dashDataList = new ArrayList<>();
+
+        try (
+            Statement stmt = dbConnection.createStatement();
+            ResultSet rs = stmt.executeQuery(fetchQuery);
+        ) {
+            while (rs.next()) {
+                dashDataList.add(rs.getString("goalName"));
+                dashDataList.add(String.valueOf(rs.getDate("goalEnd")));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.err.println("Error while fetching data from DB");
+        }
+
+
+        return dashDataList;
     }
 }
