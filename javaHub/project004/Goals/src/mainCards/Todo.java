@@ -7,6 +7,6 @@ public class Todo extends JPanel{
     JPanel mainPanel;
     CardLayout cardLayout;
 
-    public Todo(JPanel mainPanel, CardLayout cardLayout){System.out.println("Todo");}
+    public Todo(JPanel mainPanel, CardLayout cardLayout){/*System.out.println("Todo");*/}
 }
 

@@ -135,7 +135,7 @@ public class MyGoalsListItem extends JPanel implements ActionListener {
                 String newGoalName = goalNameField.getText();
                 // Handle the new goal name input
                 if (!newGoalName.isEmpty()) {
-                    System.out.println(newGoalName);
+                    // System.out.println(newGoalName);
 
                     updateName(newGoalName, oldGoalName);
                 }

@@ -54,7 +54,7 @@ public class DBManagement {
 
         try {
             dbConnection = DriverManager.getConnection(url, username, password);
-            System.out.println("Connection Established Successfully");
+            System.out.println("Connection Established Successfully"); //log;
 
             // dbConnection.close(); //temp stay open the connection;
         } 
@@ -79,7 +79,7 @@ public class DBManagement {
 
             insertGoals.executeUpdate();
 
-            System.out.println("Insertion Successful"); //log;
+            // System.out.println("Insertion Successful"); //log;
         } 
         catch (SQLException e) {
             e.printStackTrace(); //log;
@@ -149,7 +149,7 @@ public class DBManagement {
             deleteEntry.setString(1, goalName);
             deleteEntry.executeUpdate();
 
-            System.err.println("Goal Deleted");
+            // System.err.println("Goal Deleted"); //log;
         } catch (SQLException e) {
             e.printStackTrace();
             deleteFlag = false;
@@ -172,7 +172,7 @@ public class DBManagement {
 
             updateEntry.executeUpdate();
 
-            System.err.println("Goal Updated");
+            // System.err.println("Goal Updated"); //log;
         } catch (SQLException e) {
             e.printStackTrace();
             updateFlag = false;
@@ -226,7 +226,7 @@ public class DBManagement {
             clearEntry.executeUpdate(); //now only one item added at a time;
             updateEntry.executeUpdate();
 
-            System.err.println("Priority inserted into table");
+            // System.err.println("Priority inserted into table"); //log;
         } catch (SQLException e) {
             e.printStackTrace();
             System.err.println("Error while inserting priority Goal");

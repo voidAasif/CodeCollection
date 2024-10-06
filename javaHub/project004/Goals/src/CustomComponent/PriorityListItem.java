@@ -99,7 +99,7 @@ public class PriorityListItem extends JPanel implements ActionListener{ //cards 
         boolean addFlag = dbManagement.addPriorityGoal(goalName);
 
         if(addFlag){
-            System.out.println("Priority Goal Added"); //log;
+            // System.out.println("Priority Goal Added"); //log;
         }
     }
 }

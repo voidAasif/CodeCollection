@@ -56,7 +56,7 @@ public class MyGoals extends JPanel implements ActionListener {
     }
 
     private void initUI(){
-        System.out.println("MY Goals"); //log;
+        // System.out.println("MY Goals"); //log;
         this.setLayout(new BorderLayout());
         this.addComponentListener(new ComponentListener() {
 
@@ -152,7 +152,7 @@ public class MyGoals extends JPanel implements ActionListener {
         List<String> nameList = dbManagement.getNameList();
         List<Date> endDateList = dbManagement.getEndDateList();
 
-        System.out.println(nameList); //debug;
+        // System.out.println(nameList); //debug;
 
         for(int i=0; i<nameList.size(); i++){
             midPanel.add(new MyGoalsListItem(midPanel, midPanelScroll, nameList.get(i), endDateList.get(i))); //add new listItem;

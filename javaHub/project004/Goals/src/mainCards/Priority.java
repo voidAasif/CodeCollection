@@ -52,7 +52,7 @@ public class Priority extends JPanel implements ActionListener{
     }
 
     private void initUI(){
-        System.out.println("MY Goals"); //log;
+        // System.out.println("MY Goals"); //log;
         this.setLayout(new BorderLayout());
         this.addComponentListener(new ComponentListener() {
 
@@ -128,7 +128,7 @@ public class Priority extends JPanel implements ActionListener{
 
         List<String> nameList = dbManagement.getNameList();
 
-        System.out.println(nameList); //debug;
+        // System.out.println(nameList); //debug;
 
         for(int i=0; i<nameList.size(); i++){
             midPanel.add(new PriorityListItem(midPanel, midPanelScroll, nameList.get(i))); //add new ListRadio;
