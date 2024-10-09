@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 
+import DBase.DBManagement;
 import SoundControl.SoundEffect;
 
 import javax.swing.BorderFactory;
@@ -18,8 +19,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 public class TodoListItemNotDone extends JPanel implements ActionListener{
-    JPanel midPanel;
-    JScrollPane midPanelScroll;
+    JPanel completedTaskPanel;
+    JPanel inCompleteTaskPanel;
+    JScrollPane inCompleteTaskPanelScroll;
     String goalName;
     
     ImageIcon addButtonIcon = new ImageIcon(getClass().getResource("/res/icons/square.png"));
@@ -34,9 +36,10 @@ public class TodoListItemNotDone extends JPanel implements ActionListener{
     Color themeColor = new Color(0x123456);
 
 
-    public TodoListItemNotDone(JPanel midPanel, JScrollPane midPanelScroll, String goalName){
-        this.midPanel = midPanel;
-        this.midPanelScroll = midPanelScroll;
+    public TodoListItemNotDone(JPanel completedTaskPanel, JPanel inCompleteTaskPanel, JScrollPane inCompleteTaskPanelScroll, String goalName){
+        this.completedTaskPanel = completedTaskPanel;
+        this.inCompleteTaskPanel = inCompleteTaskPanel;
+        this.inCompleteTaskPanelScroll = inCompleteTaskPanelScroll;
         this.goalName = goalName;
 
         this.setLayout(new BorderLayout());
@@ -88,9 +91,21 @@ public class TodoListItemNotDone extends JPanel implements ActionListener{
         if(arg0.getSource() == addButton){
             soundEffect.playSound("/res/audio/addButton.wav");
             
-            addPriorityGoal(goalNameLabel.getText());
+            moveToComplete(goalNameLabel.getText());
         }
     }
 
-    private void addPriorityGoal(String goalName){}
+    private void moveToComplete(String goalName){
+        DBManagement dbManagement = new DBManagement();
+
+        boolean moveFlag = dbManagement.inCompleteToComplete(goalName);
+
+        if(moveFlag){
+            inCompleteTaskPanel.remove(this);
+
+            inCompleteTaskPanel.revalidate();
+            inCompleteTaskPanel.repaint();
+
+        }
+    }
 }

@@ -14,13 +14,18 @@ import java.awt.Image;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
+import javax.swing.BorderFactory;
 import java.util.List;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 import javax.swing.JScrollPane;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 
+import java.sql.Date;
+
+import CustomComponent.TodoListItemDone;
 import CustomComponent.TodoListItemNotDone;
 import DBase.DBManagement;
 import SoundControl.*;
@@ -75,15 +80,15 @@ public class Todo extends JPanel implements ActionListener, ComponentListener {
 
         inCompleteTaskPanel = new JPanel(); //panel contains incomplete task;
         inCompleteTaskPanel.setLayout(new BoxLayout(inCompleteTaskPanel, BoxLayout.Y_AXIS));
-        inCompleteTaskPanel.setBackground(Color.RED);
+        // inCompleteTaskPanel.setBackground(Color.RED); //temp;
 
         completedTaskPanel = new JPanel(); //panel contains complete task;
         completedTaskPanel.setLayout(new BoxLayout(completedTaskPanel, BoxLayout.Y_AXIS));
-        completedTaskPanel.setBackground(Color.BLUE);
+        // completedTaskPanel.setBackground(Color.BLUE); //temp;
 
         //scrollPane for complete on incomplete task;
         inCompleteTaskPanelScroll = new JScrollPane(inCompleteTaskPanel);
-        inCompleteTaskPanelScroll.setBorder(null);
+        inCompleteTaskPanelScroll.setBorder(BorderFactory.createMatteBorder(0, 0, 5, 0, Color.WHITE));
         completedTaskPanelScroll = new JScrollPane(completedTaskPanel);
         completedTaskPanelScroll.setBorder(null);
 
@@ -126,12 +131,48 @@ public class Todo extends JPanel implements ActionListener, ComponentListener {
     public void componentResized(ComponentEvent arg0) {}
     
     @Override
-    public void componentShown(ComponentEvent arg0) { updateNotDone(); updateDone();}
+    public void componentShown(ComponentEvent arg0) { checkToday(); }
+
+    private void checkToday(){
+        DBManagement dbManagement = new DBManagement();
+
+        boolean dateFlag = dbManagement.getWhichDate(); //it must be return bool;
+
+        incompleteGoals();
+        completeGoals();
+    }
     
     // update inCompleteTaskPanel;
-    private void updateNotDone(){}
+    private void incompleteGoals(){
+        inCompleteTaskPanel.removeAll();
+        DBManagement dbManagement = new DBManagement();
+        List<String> goalNameList = new ArrayList<>();
+
+        goalNameList = dbManagement.getIncompleteGoals();
+
+        goalNameList.forEach(goalName -> {inCompleteTaskPanel.add(new TodoListItemNotDone(midPanel, inCompleteTaskPanel, inCompleteTaskPanelScroll, goalName));});
+
+        inCompleteTaskPanel.revalidate();
+        inCompleteTaskPanel.repaint();
+        inCompleteTaskPanelScroll.revalidate();
+        inCompleteTaskPanelScroll.repaint();
+    }
 
     // update completedTaskPanel;
-    private void updateDone(){}
+    private void completeGoals(){
+        completedTaskPanel.removeAll();
+        DBManagement dbManagement = new DBManagement();
+        List<String> goalNameList = new ArrayList<>();
+
+        goalNameList = dbManagement.getCompleteGoals();
+
+        goalNameList.forEach(goalName -> {completedTaskPanel.add(new TodoListItemDone(midPanel, completedTaskPanel, completedTaskPanelScroll, goalName));});
+
+        completedTaskPanel.revalidate();
+        completedTaskPanel.repaint();
+        completedTaskPanelScroll.revalidate();
+        completedTaskPanelScroll.repaint();
+    }
+
 }
 

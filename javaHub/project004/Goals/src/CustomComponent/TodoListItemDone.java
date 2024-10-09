@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 
+import DBase.DBManagement;
 import SoundControl.SoundEffect;
 
 import javax.swing.BorderFactory;
@@ -18,8 +19,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 public class TodoListItemDone extends JPanel implements ActionListener{
-    JPanel midPanel;
-    JScrollPane midPanelScroll;
+    JPanel inCompleteTaskPanel;
+    JPanel completedTaskPanel;
+    JScrollPane completedTaskPanelScroll;
     String goalName;
     
     ImageIcon addButtonIcon = new ImageIcon(getClass().getResource("/res/icons/tick.png"));
@@ -31,18 +33,21 @@ public class TodoListItemDone extends JPanel implements ActionListener{
 
     SoundEffect soundEffect = new SoundEffect();
 
-    Color themeColor = new Color(0x123456);
+    Color themeColor = Color.LIGHT_GRAY;
+    Color themeColor2 = new Color(0x123456);
 
 
-    public TodoListItemDone(JPanel midPanel, JScrollPane midPanelScroll, String goalName){
-        this.midPanel = midPanel;
-        this.midPanelScroll = midPanelScroll;
+    public TodoListItemDone(JPanel inCompleteTaskPanel, JPanel completedTaskPanel, JScrollPane completedTaskPanelScroll, String goalName){
+        this.inCompleteTaskPanel = inCompleteTaskPanel;
+        this.completedTaskPanel = completedTaskPanel;
+        this.completedTaskPanelScroll = completedTaskPanelScroll;
         this.goalName = goalName;
 
         this.setLayout(new BorderLayout());
         // this.setPreferredSize(new Dimension(150, 100));
         this.setMaximumSize(new Dimension(Integer.MAX_VALUE, 65));
-        this.setBackground(Color.LIGHT_GRAY);
+        // this.setBackground(Color.LIGHT_GRAY);
+        this.setBackground(themeColor2);
 
         //label;
         goalNameLabel = createLabel(goalName);
@@ -67,7 +72,8 @@ public class TodoListItemDone extends JPanel implements ActionListener{
         // label.setBorder(BorderFactory.createLineBorder(Color.white, 10));
         label.setBorder(BorderFactory.createMatteBorder(10, 50, 10, 10, themeColor)); //left padding;
         label.setFont(new Font("Monospaced", Font.PLAIN, 20));
-        label.setForeground(Color.WHITE);
+        // label.setForeground(Color.WHITE);
+        label.setForeground(themeColor2);
 
         return label;
     }
@@ -88,9 +94,20 @@ public class TodoListItemDone extends JPanel implements ActionListener{
         if(arg0.getSource() == addButton){
             soundEffect.playSound("/res/audio/addButton.wav");
             
-            addPriorityGoal(goalNameLabel.getText());
+            moveToIncomplete(goalNameLabel.getText());
         }
     }
 
-    private void addPriorityGoal(String goalName){}
+    private void moveToIncomplete(String goalName){
+        DBManagement dbManagement = new DBManagement();
+
+        boolean moveFlag = dbManagement.completeToInComplete(goalName);
+
+        if(moveFlag){
+            completedTaskPanel.remove(this);
+
+            completedTaskPanel.revalidate();
+            completedTaskPanel.repaint(); 
+        }
+    }
 }

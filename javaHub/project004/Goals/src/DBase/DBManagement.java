@@ -7,14 +7,15 @@ import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.sql.Date;
 
 import java.util.List;
 
-import java.sql.ResultSet;
-import java.sql.Statement;
+import com.mysql.cj.xdevapi.PreparableStatement;
 
 import java.util.ArrayList;
-import java.sql.Date;
 
 
 public class DBManagement {
@@ -251,10 +252,192 @@ public class DBManagement {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            System.err.println("Error while fetching data from DB");
+            System.err.println("Error while fetching data from DB"); //log;
         }
 
 
         return dashDataList;
+    }
+
+    public boolean getWhichDate(){
+        final String fetchDateQuery = "SELECT whichDate FROM dateNow WHERE dateId = 1;";
+        Date whichDate;
+        Date todayDate = new Date(System.currentTimeMillis());
+
+        try (
+            Statement fetchDate = dbConnection.createStatement();
+            ResultSet fetchResult = fetchDate.executeQuery(fetchDateQuery);
+        ) {
+
+            while(fetchResult.next()){
+                whichDate = fetchResult.getDate("whichDate");
+
+                System.out.println(todayDate);
+                System.out.println(whichDate);
+
+                if(!(todayDate.toString().equals(whichDate.toString()))){
+                    System.out.println("debug date");
+                    resetDateNow(todayDate);
+                    moveIntoIncomplete();
+                    return false; //not today;
+                }else {
+                    System.out.println("Both date same");
+                }
+            }
+
+            System.out.println("Success fetch date"); //log;
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.err.println("Error while fetching Date"); //log;
+        }
+
+        return true; //today;
+    }
+
+    private void resetDateNow(Date todayDate){
+        final String updateDateQuery = "UPDATE dateNow SET whichDate = ? WHERE dateId = 1;";
+
+        try (
+            PreparedStatement updateEntry = dbConnection.prepareStatement(updateDateQuery);
+        ) {
+            updateEntry.setDate(1, todayDate);
+
+            updateEntry.executeUpdate();
+
+            System.out.println("Date reset success");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.err.println("Error while updating today date"); //log;
+        }
+    }
+
+    private void moveIntoIncomplete(){
+        final String copyQuery = "SELECT goalName FROM goalsData;";
+        final String resetIncompleteQuery = "DELETE FROM incompleteGoals;";
+        final String pasteQuery = "INSERT INTO incompleteGoals (goalName) VALUES (?);";
+
+        try (
+            Statement copyStmt = dbConnection.createStatement(); // for copy query;
+            ResultSet copyResult = copyStmt.executeQuery(copyQuery);
+
+            Statement resetStmt = dbConnection.createStatement(); // for reset query;
+
+            PreparedStatement pasteStmt = dbConnection.prepareStatement(pasteQuery); //for paste query;
+        ) {
+            resetStmt.executeUpdate(resetIncompleteQuery);
+
+            while(copyResult.next()){
+                String currentName = copyResult.getString("goalName");
+                pasteStmt.setString(1, currentName);
+                pasteStmt.addBatch();
+            }
+
+            pasteStmt.executeBatch();
+
+            System.out.println("Move data success");
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.err.println("Error while copy paste data");
+        }
+    }
+
+    public List<String> getIncompleteGoals(){
+        final String fetchGoalNameQuery = "SELECT goalName FROM incompleteGoals;";
+
+        List<String> goalNameList = new ArrayList<>();
+
+        try (
+            Statement fetchGoalName = dbConnection.createStatement();
+            ResultSet fetchResult = fetchGoalName.executeQuery(fetchGoalNameQuery);
+        ) {
+            
+            while(fetchResult.next()){
+                goalNameList.add(fetchResult.getString("goalName"));
+            }
+
+            System.out.println("Get data success");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.err.println("Error while fetching goalName from incompleteGoals");
+        }
+
+        return goalNameList;
+    }
+
+    public List<String> getCompleteGoals(){
+        final String fetchGoalNameQuery = "SELECT goalName FROM completeGoals;";
+
+        List<String> goalNameList = new ArrayList<>();
+
+        try (
+            Statement fetchGoalName = dbConnection.createStatement();
+            ResultSet fetchResult = fetchGoalName.executeQuery(fetchGoalNameQuery);
+        ) {
+            
+            while(fetchResult.next()){
+                goalNameList.add(fetchResult.getString("goalName"));
+            }
+
+            System.out.println("Get data success");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.err.println("Error while fetching goalName from incompleteGoals");
+        }
+
+        return goalNameList;
+    }
+
+    //TodoListItemNotDone;
+    public boolean inCompleteToComplete(String goalName){
+    
+        final String pasteQuery = "INSERT INTO completeGoals (goalName) VALUES (?);";
+        final String deleteQuery = "DELETE FROM incompleteGoals WHERE goalName = ?";
+
+        try (
+            PreparedStatement pasteStmt = dbConnection.prepareStatement(pasteQuery);
+            PreparedStatement deleteStmt = dbConnection.prepareStatement(deleteQuery);
+        ) {
+            pasteStmt.setString(1, goalName);
+            pasteStmt.executeUpdate(); //insert into complete table;
+
+            deleteStmt.setString(1, goalName);
+            deleteStmt.executeUpdate(); //delete from incomplete table;
+
+            return true;
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
+    //TodoListItemDone;
+    public boolean completeToInComplete(String goalName){
+        final String pasteQuery = "INSERT INTO incompleteGoals (goalName) VALUES (?);";
+        final String deleteQuery = "DELETE FROM completeGoals WHERE goalName = ?";
+
+        try (
+            PreparedStatement pasteStmt = dbConnection.prepareStatement(pasteQuery);
+            PreparedStatement deleteStmt = dbConnection.prepareStatement(deleteQuery);
+        ) {
+            pasteStmt.setString(1, goalName);
+            pasteStmt.executeUpdate(); //insert into complete table;
+
+            deleteStmt.setString(1, goalName);
+            deleteStmt.executeUpdate(); //delete from incomplete table;
+
+            return true;
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false;
     }
 }
