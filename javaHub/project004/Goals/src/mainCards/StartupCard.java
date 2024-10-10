@@ -112,7 +112,10 @@ public class StartupCard extends JPanel implements ActionListener{
             Timer timer = new Timer(400, new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent arg0) {
+                    System.out.println("Switching to add card"); //debug line;
                     cardLayout.show(mainPanel, "AddCard");
+                    mainPanel.revalidate();
+                    mainPanel.repaint();
                 }   
             }); 
             timer.setRepeats(false);  // Only execute once

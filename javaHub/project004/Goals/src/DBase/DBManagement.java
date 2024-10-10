@@ -456,4 +456,27 @@ public class DBManagement {
 
         return false;
     }
+
+    public boolean isSetupCompleted(){
+        final String getSetupFlagQuery = "SELECT setupFlag FROM setupData;";
+        final String setFlagFalse = "UPDATE setupData SET setupFlag = 1 WHERE setupId = 1;";
+
+        try (
+            Statement setupFlagStmt = dbConnection.createStatement();
+            Statement setFlagFalseStmt = dbConnection.createStatement();
+            ResultSet setupFlagResult = setupFlagStmt.executeQuery(getSetupFlagQuery);
+        ) {
+            
+            while(setupFlagResult.next()){
+                setFlagFalseStmt.executeUpdate(setFlagFalse);
+                return setupFlagResult.getBoolean("setupFlag");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.err.println("Error while fetching setup flag fro setupData");
+        }
+
+        return false;
+    }
 }
