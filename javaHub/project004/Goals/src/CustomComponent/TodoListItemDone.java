@@ -105,9 +105,13 @@ public class TodoListItemDone extends JPanel implements ActionListener{
 
         if(moveFlag){
             completedTaskPanel.remove(this);
-
             completedTaskPanel.revalidate();
-            completedTaskPanel.repaint(); 
+            completedTaskPanel.repaint();
+
+            inCompleteTaskPanel.add(new TodoListItemNotDone(completedTaskPanel, inCompleteTaskPanel, completedTaskPanelScroll, goalName));
+            inCompleteTaskPanel.revalidate();
+            inCompleteTaskPanel.repaint();
         }
     }
 }
+

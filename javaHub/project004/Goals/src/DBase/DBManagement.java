@@ -279,6 +279,7 @@ public class DBManagement {
                     System.out.println("debug date");
                     resetDateNow(todayDate);
                     moveIntoIncomplete();
+                    clearCompleteGoals();
                     return false; //not today;
                 }else {
                     System.out.println("Both date same");
@@ -341,6 +342,21 @@ public class DBManagement {
         } catch (SQLException e) {
             e.printStackTrace();
             System.err.println("Error while copy paste data");
+        }
+    }
+
+    private void clearCompleteGoals(){
+
+        final String clearQuery = "DELETE FROM completeGoals;";
+
+        try (
+            Statement clearStmt = dbConnection.createStatement();
+        ) {
+            clearStmt.executeUpdate(clearQuery);
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.err.println("Error while clearing complete table");
         }
     }
 

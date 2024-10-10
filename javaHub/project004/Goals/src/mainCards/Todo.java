@@ -150,7 +150,7 @@ public class Todo extends JPanel implements ActionListener, ComponentListener {
 
         goalNameList = dbManagement.getIncompleteGoals();
 
-        goalNameList.forEach(goalName -> {inCompleteTaskPanel.add(new TodoListItemNotDone(midPanel, inCompleteTaskPanel, inCompleteTaskPanelScroll, goalName));});
+        goalNameList.forEach(goalName -> {inCompleteTaskPanel.add(new TodoListItemNotDone(completedTaskPanel, inCompleteTaskPanel, inCompleteTaskPanelScroll, goalName));});
 
         inCompleteTaskPanel.revalidate();
         inCompleteTaskPanel.repaint();
@@ -166,7 +166,7 @@ public class Todo extends JPanel implements ActionListener, ComponentListener {
 
         goalNameList = dbManagement.getCompleteGoals();
 
-        goalNameList.forEach(goalName -> {completedTaskPanel.add(new TodoListItemDone(midPanel, completedTaskPanel, completedTaskPanelScroll, goalName));});
+        goalNameList.forEach(goalName -> {completedTaskPanel.add(new TodoListItemDone(inCompleteTaskPanel, completedTaskPanel, completedTaskPanelScroll, goalName));});
 
         completedTaskPanel.revalidate();
         completedTaskPanel.repaint();
