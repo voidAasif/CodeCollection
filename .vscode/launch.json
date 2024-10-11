@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "HelloApplication",
+            "request": "launch",
+            "mainClass": "com.firstfx.firstfx/com.firstfx.firstfx.HelloApplication",
+            "projectName": "firstFx"
+        },
+        {
+            "type": "java",
             "name": "j025_flow",
             "request": "launch",
             "mainClass": "javaHub.FrameSwing.code.j025_flow",
