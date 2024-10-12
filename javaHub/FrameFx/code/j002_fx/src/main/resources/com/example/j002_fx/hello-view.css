@@ -1,0 +1,16 @@
+VBox {
+    -fx-background-color: orange;
+}
+
+#welcomeText {
+    -fx-text-fill: black;
+    -fx-font-size: 40px;
+    -fx-font-weight: 900;
+}
+
+.button {
+    -fx-background-color: yellow;
+    -fx-pref-width: 100px;
+    -fx-pref-height: 50px;
+    -fx-box-shadow: 10px 10px 5px black;
+}
