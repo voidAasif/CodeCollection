@@ -1,3 +1,5 @@
-body {
-    background-color: grey;
+*{
+    margin: 0;
+    position: 0;
+    box-sizing: border-box;
 }
