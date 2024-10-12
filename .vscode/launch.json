@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "App",
+            "request": "launch",
+            "mainClass": "first.App",
+            "projectName": "fx"
+        },
+        {
+            "type": "java",
             "name": "HelloApplication",
             "request": "launch",
             "mainClass": "com.firstfx.firstfx/com.firstfx.firstfx.HelloApplication",
