@@ -13,4 +13,6 @@ VBox {
     -fx-pref-width: 100px;
     -fx-pref-height: 50px;
     -fx-box-shadow: 10px 10px 5px black;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
 }

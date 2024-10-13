@@ -1,5 +1,7 @@
 package com.example.j002_fx;
 
+//this controller class connected with FXML with property (fx:"xyx.controller") in hello-view.fxml;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -40,9 +42,7 @@ public class HelloController {
     }
 
     @FXML
-    protected void onOneButtonClick() {
-        welcomeText.setText("EK");
-    }
+    protected void onOneButtonClick() {welcomeText.setText("EK");}
 
     @FXML
     protected void onTwoButtonClick() {welcomeText.setText("DO");}

@@ -1,6 +1,6 @@
 package com.example.j002_fx;
 
-//actions and external XML, CSS demo;
+//actions(all ways) and external XML, CSS demo;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
