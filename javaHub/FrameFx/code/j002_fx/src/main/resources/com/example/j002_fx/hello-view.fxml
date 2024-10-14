@@ -4,17 +4,46 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ScrollBar?>
+<?import javafx.scene.layout.TilePane?>
 
+<?import javafx.scene.layout.FlowPane?>
+<BorderPane fx:id="borderPane" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.j002_fx.HelloController">
 
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.j002_fx.HelloController">
-  <padding>
-    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-  </padding>
+<!-- VBox on the left -->
+<left>
+  <VBox fx:id="vbox" alignment="CENTER" spacing="20.0">
+    <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
 
-  <Label fx:id="welcomeText"/>
-  <Button fx:id="btnOne" text="One" onAction="#onOneButtonClick"/>
-  <Button fx:id="btnTwo" text="Two" onAction="#onTwoButtonClick"/>
-  <Button fx:id="btnThree" text="Three" onAction="#onThreeButtonClick"/>
-  <Button fx:id="btnFour" text="Four" onAction="#onFourButtonClick"/>
-</VBox>
+    <Label fx:id="welcomeText"/>
+    <Button fx:id="btnOne" text="One" onAction="#onOneButtonClick"/>
+    <Button fx:id="btnTwo" text="Two" onAction="#onTwoButtonClick"/>
+    <Button fx:id="btnThree" text="Three" onAction="#onThreeButtonClick"/>
+    <Button fx:id="btnFour" text="Four" onAction="#onFourButtonClick"/>
+  </VBox>
+</left>
+
+<!-- TilePane on the right -->
+<center>
+  <FlowPane fx:id="flowPane">
+    <TextField fx:id="textField"/>
+    <PasswordField fx:id="passwordField"/>
+    <CheckBox fx:id="checkBox"/>
+    <RadioButton fx:id="radioMale" toggleGroup="$genderGroup" text="Male" />
+    <RadioButton fx:id="radioFemale" toggleGroup="$genderGroup" text="Female" />
+    <ComboBox fx:id="combo"/>
+    <ScrollBar fx:id="scrollBar" />
+  </FlowPane>
+</center>
+
+</BorderPane>
+

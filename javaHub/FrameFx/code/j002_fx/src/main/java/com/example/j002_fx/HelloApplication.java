@@ -2,6 +2,8 @@ package com.example.j002_fx;
 
 //actions(all ways) and external XML, CSS demo;
 
+//apply diff ways of action on each Button; ==> pending;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
