@@ -2,27 +2,20 @@ package com.example.j002_fx;
 
 //this controller class connected with FXML with property (fx:"xyx.controller") in hello-view.fxml;
 
-import javafx.beans.value.ChangeListener;
 import javafx.event.ActionEvent;
-import javafx.event.EventType;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.effect.DropShadow;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+
+import javax.swing.*;
 
 public class HelloController {
 
     @FXML
-    private BorderPane borderPane;
-
-    @FXML
-    private VBox vbox;
-
-    @FXML
-    private FlowPane flowPane;
+    private VBox vBox;
 
     @FXML
     private Label welcomeText;
@@ -30,15 +23,6 @@ public class HelloController {
     // Declare button variables with @FXML annotation
     @FXML
     private Button btnOne;
-
-    @FXML
-    private Button btnTwo;
-
-    @FXML
-    private Button btnThree;
-
-    @FXML
-    private Button btnFour;
 
     @FXML
     public void initialize() {
@@ -53,9 +37,51 @@ public class HelloController {
 
         // Apply shadow effect to buttons
         btnOne.setEffect(dropShadow);
+
+        // Create buttons dynamically
+        //btnOne define in XML;
+        Button btnTwo = new Button("Two");
+        Button btnThree = new Button("Three");
+        Button btnFour = new Button("Four");
+        Button btnFive = new Button("Five");
+
+
+        // Set actions for the dynamically created buttons
+        // Action 2;
+        btnTwo.setOnAction(e -> welcomeText.setText("DO")); //actionListener using lambda;
+
+        // Action 3;
+        btnThree.setOnAction(new EventHandler<ActionEvent>() { //actionListener using AnonClass;
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                welcomeText.setText("Teen");
+            }
+        });
+
+        // Action 4;
+//        EventHandler<ActionEvent> actionObj = new EventHandler<>(); //this is not possible because of EventHandler is an Interface;
+        EventHandler<ActionEvent> actionObj = new EventHandler<ActionEvent>() { // actionListener using event Obj;
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                welcomeText.setText("Char");
+            }
+        };
+        btnFour.setOnAction(actionObj);
+
+
+
+        btnFive.setOnAction(this::handleBtnFiveClick);
+
+
+
+        // Apply the same DropShadow effect to the new buttons
         btnTwo.setEffect(dropShadow);
         btnThree.setEffect(dropShadow);
         btnFour.setEffect(dropShadow);
+        btnFive.setEffect(dropShadow);
+
+        // Add dynamically created buttons to the VBox
+        vBox.getChildren().addAll(btnTwo, btnThree, btnFour, btnFive);
 
 
 //        tilePane
@@ -96,6 +122,7 @@ public class HelloController {
 
         // ComboBox
         combo.getItems().addAll("Option 1", "Option 2", "Option 3");
+        combo.setValue("Option 2");
 
         // ScrollBar;
         scrollBar.adjustValue(20);
@@ -104,23 +131,21 @@ public class HelloController {
         System.out.println(scrollBar.getValue());
 
         // Add listener to print ScrollBar value when it changes
-        scrollBar.valueProperty().addListener((observable, oldValue, newValue) -> {
+        scrollBar.valueProperty().addListener((observable, oldValue, newValue) -> { // change listener;
             System.out.println("ScrollBar Value: " + newValue.doubleValue());
         });
 
+    } // end initialize;
+
+    // Action 5;
+    public void handleBtnFiveClick(ActionEvent e){ //ActionListener using method ref;
+        welcomeText.setText("Paach");
     }
 
+    // Action 1;
     @FXML
-    protected void onOneButtonClick() {welcomeText.setText("EK");}
+    protected void onOneButtonClick() {welcomeText.setText("EK");} //actionListener using XML;
 
-    @FXML
-    protected void onTwoButtonClick() {welcomeText.setText("DO");}
-
-    @FXML
-    protected void onThreeButtonClick() {welcomeText.setText("TEEN");}
-
-    @FXML
-    protected void onFourButtonClick() {welcomeText.setText("CHAR");}
 
     //TitledPane start;
 
@@ -140,10 +165,10 @@ public class HelloController {
     private RadioButton radioFemale;
 
     @FXML
-    private ToggleGroup genderGroup;
+    private ComboBox<String> combo;
 
     @FXML
-    private ComboBox<String> combo;
+    private ToggleGroup genderGroup;
 
     @FXML
     private ScrollBar scrollBar;

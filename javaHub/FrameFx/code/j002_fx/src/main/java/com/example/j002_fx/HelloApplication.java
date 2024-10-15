@@ -2,8 +2,6 @@ package com.example.j002_fx;
 
 //actions(all ways) and external XML, CSS demo;
 
-//apply diff ways of action on each Button; ==> pending;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -11,9 +9,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class HelloApplication extends Application {
+public class HelloApplication extends Application { //it is only a start point of app;
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage stage) throws IOException { //start method invoke when launch method call;
 
         //load XML form resources;
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));

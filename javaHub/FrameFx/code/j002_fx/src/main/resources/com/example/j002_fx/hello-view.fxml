@@ -11,29 +11,25 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.ScrollBar?>
-<?import javafx.scene.layout.TilePane?>
 
 <?import javafx.scene.layout.FlowPane?>
 <BorderPane fx:id="borderPane" xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.example.j002_fx.HelloController">
 
 <!-- VBox on the left -->
-<left>
-  <VBox fx:id="vbox" alignment="CENTER" spacing="20.0">
+<left> <!-- to set left of BorderPane-->
+  <VBox fx:id="vBox" alignment="CENTER" spacing="20.0">
     <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
 
     <Label fx:id="welcomeText"/>
     <Button fx:id="btnOne" text="One" onAction="#onOneButtonClick"/>
-    <Button fx:id="btnTwo" text="Two" onAction="#onTwoButtonClick"/>
-    <Button fx:id="btnThree" text="Three" onAction="#onThreeButtonClick"/>
-    <Button fx:id="btnFour" text="Four" onAction="#onFourButtonClick"/>
   </VBox>
 </left>
 
 <!-- TilePane on the right -->
-<center>
+<center> <!-- to set center of BorderPane -->
   <FlowPane fx:id="flowPane">
     <TextField fx:id="textField"/>
     <PasswordField fx:id="passwordField"/>

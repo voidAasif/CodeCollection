@@ -1,23 +1,27 @@
-VBox {
+VBox { /* select by attribute form xml */
     -fx-background-color: orange;
 }
 
-#welcomeText {
+#welcomeText { /* select by id from xml */
     -fx-text-fill: black;
     -fx-font-size: 40px;
     -fx-font-weight: 900;
 }
 
-.button {
+.button { /* select by class from xml */
     -fx-background-color: yellow;
     -fx-pref-width: 100px;
     -fx-pref-height: 50px;
-    -fx-box-shadow: 10px 10px 5px black;
     -fx-background-radius: 20px;
     -fx-border-radius: 20px;
 }
 
-.button:pressed {
+.button:pressed { /* apply whe button clicked */
     -fx-pref-width: 90px;
     -fx-pref-height: 45px;
+    -fx-effect: dropshadow(gaussian, red, 5, 0.5, 5, 5); /* take:(smoothness, color, radius, spread, offSetX, offSetY) (javaClass:DropShadow)*/
 }
+/*
+styleClass="my-button" <- give this property to the attribute in xml to group components in class;
+
+*/
