@@ -1,0 +1,43 @@
+VBox, GridPane {
+    -fx-padding: 20px 10px 0px 10px;
+
+    -fx-background-color: linear-gradient(to right, #f5f5dc, #e0f7fa);
+}
+
+#titleLabel {
+    -fx-font-size: 30px;
+    -fx-font-weight: 500;
+}
+
+.label {
+    -fx-padding: 0px 0px 4px 0px;
+}
+
+.input {
+    -fx-height: 10px; /* notWorking; */
+}
+
+.radio {
+    -fx-mark-color: blue;
+}
+
+.checkBox {
+    -fx-font-size: 15px;
+    -fx-font-weight: 400;
+    -fx-mark-color: green;
+}
+
+.buttonContainer {
+    -fx-padding: 50px 0px 0px 0px;
+}
+
+.submitButton {
+    -fx-pref-width: 100px;
+    -fx-pref-height: 50px;
+    -fx-background-color: #e0f7fa;
+    -fx-effect: dropshadow(gaussian, gray, 2, 15, 0, 0);
+}
+.submitButton:pressed {
+    -fx-opacity: 0.7; /* Changes opacity to 70% when pressed */
+    -fx-effect: dropshadow(gaussian, gray, 1, 1, 0, 0);
+}
