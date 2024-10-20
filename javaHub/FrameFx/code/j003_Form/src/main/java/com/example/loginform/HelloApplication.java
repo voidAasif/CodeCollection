@@ -3,6 +3,7 @@ package com.example.loginform;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -14,6 +15,7 @@ public class HelloApplication extends Application {
         launch();
     }
 
+    @SuppressWarnings("all")
     @Override
     public void start(Stage stage) throws Exception {
 
@@ -23,6 +25,8 @@ public class HelloApplication extends Application {
 
         scene.getStylesheets().add(getClass().getResource("FormStyle.css").toExternalForm());
 
+        Image icon = new Image(getClass().getResourceAsStream("res/formIcon.png")); //warning -> may be return null;
+        stage.getIcons().add(icon);
         stage.setTitle("Aasif");
         stage.setScene(scene);
         stage.show();
