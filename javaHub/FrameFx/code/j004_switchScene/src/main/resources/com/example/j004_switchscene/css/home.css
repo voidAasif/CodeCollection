@@ -1,0 +1,18 @@
+VBox {
+    -fx-padding: 10px;
+}
+
+Button {
+    -fx-pref-width: 80px;
+    -fx-pref-height: 30px;
+}
+
+Label {
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+    -fx-font-weight: 900;
+}
+
+StackPane {
+    -fx-background-color: black;
+}
