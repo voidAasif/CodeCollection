@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "j004_switchscene/App",
+            "request": "launch",
+            "mainClass": "com.example.j004_switchscene/App",
+            "projectName": "CodeCollection_f013c959"
+        },
+        {
+            "type": "java",
             "name": "App",
             "request": "launch",
             "mainClass": "first.App",

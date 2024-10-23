@@ -1,0 +1,12 @@
+VBox {
+    -fx-padding: 10px;
+}
+
+Button {
+    -fx-pref-width: 80px;
+    -fx-pref-height: 30px;
+}
+
+StackPane {
+    -fx-background-color: blue;
+}

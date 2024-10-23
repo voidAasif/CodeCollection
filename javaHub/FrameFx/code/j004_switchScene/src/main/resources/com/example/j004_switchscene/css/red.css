@@ -1,0 +1,12 @@
+VBox { /* apply vBox again because i completely clear previous css*/
+    -fx-padding: 10px;
+}
+
+Button {
+    -fx-pref-width: 80px;
+    -fx-pref-height: 30px;
+}
+
+StackPane {
+    -fx-background-color: red;
+}
