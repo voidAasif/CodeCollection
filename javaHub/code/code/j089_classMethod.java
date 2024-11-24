@@ -80,13 +80,13 @@ public class j089_classMethod {
 
         List<ClassName> studentList = List.of(
             new ClassName("A", 10),
-            new ClassName("B", 11),
+            new ClassName("B", 12),
             new ClassName("C", 12),
-            new ClassName("D", 13),
-            new ClassName("E", 14),
+            new ClassName("D", 12),
+            new ClassName("E", 15),
             new ClassName("F", 15),
-            new ClassName("G", 16),
-            new ClassName("H", 17),
+            new ClassName("G", 15),
+            new ClassName("H", 18),
             new ClassName("I", 18),
             new ClassName("J", 18) //in hashSet in store same value bcz it has diff hash;
         );

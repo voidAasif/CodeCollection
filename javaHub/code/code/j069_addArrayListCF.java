@@ -4,7 +4,7 @@ import java.util.*;
 
 public class j069_addArrayListCF {
     public static void main(String[] args){
-        System.out.println("Add two charcater arrayList");
+        System.out.println("Add two character arrayList");
 
         ArrayList <Character> chList1 = new ArrayList<>();
         ArrayList <Character> chList2 = new ArrayList<>();

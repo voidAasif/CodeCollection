@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "j001_arrayClass",
+            "request": "launch",
+            "mainClass": "javaHub.FrameCollection.j001_arrayClass",
+            "projectName": "CodeCollection_f013c959"
+        },
+        {
+            "type": "java",
+            "name": "j032_apiCall",
+            "request": "launch",
+            "mainClass": "practice.j032_apiCall",
+            "projectName": "CodeCollection_f013c959"
+        },
+        {
+            "type": "java",
             "name": "j089_classMethod",
             "request": "launch",
             "mainClass": "code.j089_classMethod",
