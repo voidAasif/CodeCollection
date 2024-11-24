@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "j002_collectionClass",
+            "request": "launch",
+            "mainClass": "javaHub.FrameCollection.j002_collectionClass",
+            "projectName": "CodeCollection_f013c959"
+        },
+        {
+            "type": "java",
             "name": "j001_arrayClass",
             "request": "launch",
             "mainClass": "javaHub.FrameCollection.j001_arrayClass",
