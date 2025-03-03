@@ -1,0 +1,288 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: transparent;
+
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* navbar  */
+
+.nav {
+    background-color: white;
+
+    align-items: center;
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+.logo h2 a{
+    text-decoration: none;
+    color: black;
+}
+
+.logo {
+
+    margin: 1rem;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 5px;
+
+}
+
+.nav ul {
+
+    padding-right: 1rem;
+
+    display: flex;
+    flex-flow: row wrap;
+    gap: 10px;
+
+}
+
+.nav ul li {
+    list-style: none;
+
+}
+
+.nav ul li a{
+    text-decoration: none;
+    color: black;
+    transition: 0.2s;
+}
+
+.nav ul li a:hover{
+
+    color: darkorange;
+}
+
+/* intro  */
+
+.intro {
+   
+    height: 80vh;
+
+    background-image: url('res/bg/b4.png');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+   
+
+}
+
+.name {
+
+    font-size: 4rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    
+    text-align: center;
+    
+    /* temp  */
+
+
+    padding: 2rem;
+    color: darkorange;
+    
+}
+
+.des {
+    color: rgb(246, 203, 151);
+    text-align: center;
+    font-size: 2rem;
+    margin-top: 3rem;
+    letter-spacing: 1px;
+}
+
+@media(min-width: 768px){
+    .name {
+        font-size: 8rem;
+    }
+    .des {
+        font-size: 2rem;
+        margin-top: 1rem;
+    }
+}
+
+
+@media(max-height: 375px){
+    .name {
+        font-size: 2rem;
+    }
+    .des {
+        font-size: 20px;
+    }
+}
+
+
+.resume {
+    text-align: center;
+    margin-top: 3rem;
+}
+.resume a button {
+
+
+    padding: 10px 20px;
+    background-color: orange;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+.resume a button:hover {
+    
+    background-color: darkorange;
+}
+
+/* project  */
+
+.project {
+    background-color: white;
+}
+
+.project h2 {
+    text-align: center;
+    color: rgb(0, 0, 0);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+}
+
+.displayProject {
+    background-color: rgb(250, 235, 220);
+    border-radius: 10px;
+
+    display: grid;
+    grid-gap: 4rem;
+    grid-template-columns: repeat(1, 1fr);
+
+    align-items: center;
+    justify-items: center;
+}
+/* img  */
+.pro {
+    background-color: white;
+    height: 50vh;
+    width: 90%;
+
+    
+    box-shadow: 10px 10px 10px gray;
+    border-radius: 20px;
+}
+.pro:hover {
+
+    box-shadow: 10px 10px 15px gray;
+}
+
+@media(min-width: 768px){
+    .displayProject {
+
+        grid-template-columns: repeat(2, 1fr);
+
+    }
+}
+
+.pro img {
+    height: 70%;
+    width: 100%;
+    
+    border-radius: 10px;
+}
+
+.pro p , h3{
+    margin-top: 10px;
+    padding-left: 10px;
+    
+}
+
+@media(max-height: 375px){
+    .displayProject {
+
+        grid-template-columns: repeat(2, 1fr);
+
+    }
+    .pro p , h3{
+        margin-top: 5px;
+        padding-left: 10px;
+        
+    }
+}
+
+/* contact  */
+
+.contact {
+    height: 70vh;
+    align-items: center;
+}
+
+.contact form h2 {
+    font-size: 2rem;
+    margin-top: 4rem;
+    margin-bottom: 1rem;
+}
+
+.contact form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.contact label {
+    text-align: left;
+    width: 100%;
+    max-width: 500px;
+}
+
+.contact input,
+.contact textarea {
+    width: 100%;
+    max-width: 500px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.contact button {
+    padding: 10px 20px;
+    background-color: orange;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.contact button:hover {
+    background-color: darkorange;
+}
+
+@media(max-height: 375px){
+    .contact {
+        height: 150vh;
+    }
+}
+
+/* Footer styling */
+footer  {
+    background-color: black;
+    /* color: white; */
+    text-align: center;
+    padding: 10px 20px;
+}
+
+footer a {
+    text-decoration: none;
+    color: white;
+}
